@@ -32,5 +32,33 @@ class PlayersSerializer(serializers.ModelSerializer):
         return player
 
     class Meta:
-        model = Players
+        model = Player
+        exclude = ('user', )
+
+
+class TeamSerializer(serializers.ModelSerializer):
+
+    # Create new contact associated with current authenticated user
+    def create(self, validated_data):
+        user = self.context['request'].user
+        validated_data['user'] = user
+        team = super().create(validated_data)
+        return team
+
+    class Meta:
+        model = Team
+        exclude = ('user', )
+
+
+class MatchSerializer(serializers.ModelSerializer):
+
+    # Create new contact associated with current authenticated user
+    def create(self, validated_data):
+        user = self.context['request'].user
+        validated_data['user'] = user
+        match = super().create(validated_data)
+        return match
+
+    class Meta:
+        model = Match
         exclude = ('user', )

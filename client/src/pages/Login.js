@@ -1,16 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import ImageLight from '../assets/img/login-office.jpeg'
-import ImageDark from '../assets/img/login-office-dark.jpeg'
+// import ImageLight from '../assets/img/login-office.jpeg'
+// import ImageDark from '../assets/img/login-office-dark.jpeg'
 import { GithubIcon, TwitterIcon } from '../icons'
-import { Label, Input, Button } from '@windmill/react-ui'
-import { useEffect, useState } from "react";
+import { Label, Input, Button, WindmillContext } from "@windmill/react-ui";
+import { useEffect, useState, useContext } from "react";
 import { useAuthActions, useAuthState } from "use-eazy-auth";
-
+import { MoonIcon, SunIcon } from '../icons'
 function Login() {
 const { loginLoading, loginError } = useAuthState();
 const { login, clearLoginError } = useAuthActions();
+  const { mode, toggleMode } = useContext(WindmillContext);
 
 // Clear login error when Login component unmount
   useEffect(() => () => clearLoginError(), [clearLoginError]);
@@ -25,21 +26,22 @@ const { login, clearLoginError } = useAuthActions();
             <img
               aria-hidden="true"
               className="object-cover w-full h-full dark:hidden"
-              src={ImageLight}
+              src="https://r4.wallpaperflare.com/wallpaper/181/737/158/cristiano-ronaldo-sports-football-hd-wallpaper-b8539f0526830d1a82a38fdf350d1624.jpg"
               alt="Office"
             />
             <img
               aria-hidden="true"
               className="hidden object-cover w-full h-full dark:block"
-              src={ImageDark}
+              src="https://i.pinimg.com/originals/15/0f/b4/150fb4ee97b1d0f99eebea6e774eb3fe.jpg"
               alt="Office"
             />
           </div>
           <main className="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
             <div className="w-full">
               <h1 className="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200">
-                Login
+                footballpro
               </h1>
+
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -85,7 +87,18 @@ const { login, clearLoginError } = useAuthActions();
                   <Button className="mt-4" block>
                     {!loginLoading ? "Login!" : "Logged in..."}
                   </Button>
-                </button>
+                </button> {" "}
+                <Button
+                  className="rounded-md focus:outline-none focus:shadow-outline-purple"
+                  onClick={toggleMode}
+                  aria-label="Toggle color mode"
+                >
+                  {mode === "dark" ? (
+                    <SunIcon className="w-5 h-5" aria-hidden="true" />
+                  ) : (
+                    <MoonIcon className="w-5 h-5" aria-hidden="true" />
+                  )}
+                </Button>
                 {loginError && (
                   <div>Bad combination of username and password.</div>
                 )}

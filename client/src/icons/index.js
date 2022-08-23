@@ -26,6 +26,10 @@ import { ReactComponent as DropdownIcon } from "./dropdown.svg";
 import { ReactComponent as OutlinePersonIcon } from "./outlinePerson.svg";
 import { ReactComponent as OutlineCogIcon } from "./outlineCog.svg";
 import { ReactComponent as OutlineLogout } from "./outlineLogout.svg";
+import { ReactComponent as won } from "./trophy-svgrepo-com.svg";
+import { ReactComponent as match } from "./football-svgrepo-com.svg";
+import { ReactComponent as draw } from "./hand-shake-svgrepo-com.svg";
+import { ReactComponent as sad } from "./sad-svgrepo-com.svg";
 
 export {
   ButtonsIcon,
@@ -56,4 +60,8 @@ export {
   OutlinePersonIcon,
   OutlineCogIcon,
   OutlineLogout,
+  won,
+  match,
+  draw,
+  sad,
 };

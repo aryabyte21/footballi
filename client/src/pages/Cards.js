@@ -7,7 +7,6 @@ import InfoCard from '../components/Cards/InfoCard'
 import { Card, CardBody } from '@windmill/react-ui'
 import { CartIcon, ChatIcon, MoneyIcon, PeopleIcon } from '../icons'
 import RoundIcon from '../components/RoundIcon'
-
 function Cards() {
   return (
     <>
@@ -63,6 +62,27 @@ function Cards() {
             className="mr-4"
           />
         </InfoCard>
+        <Card>
+          <a href="" class="block overflow-hidden rounded-2xl">
+            <img
+              class="object-cover w-full h-56"
+              src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+              alt=""
+            />
+            <div class="p-4 bg-gray-900">
+              <p class="text-xs text-gray-500">website.com</p>
+
+              <h5 class="text-sm text-white">
+                How to position your furniture for positivity
+              </h5>
+
+              <p class="mt-1 text-xs text-gray-500">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum
+                nobis aliquid accusamus? Sint, sequi voluptas.
+              </p>
+            </div>
+          </a>
+        </Card>
       </div>
 
       <SectionTitle>Cards with title</SectionTitle>
@@ -70,11 +90,14 @@ function Cards() {
       <div className="grid gap-6 mb-8 md:grid-cols-2">
         <Card>
           <CardBody>
-            <p className="mb-4 font-semibold text-gray-600 dark:text-gray-300">Revenue</p>
+            <p className="mb-4 font-semibold text-gray-600 dark:text-gray-300">
+              Revenue
+            </p>
             <p className="text-gray-600 dark:text-gray-400">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga, cum commodi a omnis
-              numquam quod? Totam exercitationem quos hic ipsam at qui cum numquam, sed amet
-              ratione! Ratione, nihil dolorum.
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga,
+              cum commodi a omnis numquam quod? Totam exercitationem quos hic
+              ipsam at qui cum numquam, sed amet ratione! Ratione, nihil
+              dolorum.
             </p>
           </CardBody>
         </Card>
@@ -83,15 +106,16 @@ function Cards() {
           <CardBody>
             <p className="mb-4 font-semibold">Colored card</p>
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga, cum commodi a omnis
-              numquam quod? Totam exercitationem quos hic ipsam at qui cum numquam, sed amet
-              ratione! Ratione, nihil dolorum.
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga,
+              cum commodi a omnis numquam quod? Totam exercitationem quos hic
+              ipsam at qui cum numquam, sed amet ratione! Ratione, nihil
+              dolorum.
             </p>
           </CardBody>
         </Card>
       </div>
     </>
-  )
+  );
 }
 
 export default Cards

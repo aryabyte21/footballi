@@ -18,5 +18,9 @@ router.register(r'contacts', ContactViewSet)
 urlpatterns += router.urls
 router.register(r'players', PlayersViewSet)
 urlpatterns += router.urls
+router.register(r'team', TeamViewSet)
+urlpatterns += router.urls
+router.register(r'match', MatchViewSet )
+urlpatterns += router.urls 
 
 
