@@ -23,7 +23,6 @@ import {
 } from '@windmill/react-ui'
 
 import {
-  doughnutOptions,
   lineOptions,
   doughnutLegends,
   lineLegends,
@@ -50,6 +49,16 @@ const CounterState = rj({
       }),
 });
 
+const TeamState = rj({
+  effectCaller: rj.configured(),
+  effect:
+    (token) =>
+    (search = "") =>
+      ajax.getJSON(`/api/team/?search=${search}`, {
+        Authorization: `Bearer ${token}`,
+      }),
+});
+
 function Dashboard() {
   const [page, setPage] = useState(1)
   const [data, setData] = useState([])
@@ -57,8 +66,49 @@ function Dashboard() {
    const [search, setSearch] = useState("");
    const [{ data: players}] = useRunRj(PlayersState, [search], false);
   const [{ data: counter }] = useRunRj(CounterState, [search], false);
-  // const sum1 = counter.reduce((total, currentValue)=>total = total + currentValue.win, 0);
+    const [{ data: team }] = useRunRj(TeamState, [search], false);
 
+  // const sum1 = counter.reduce((total, currentValue)=>total = total + currentValue.win, 0);
+const doughnutOptions = {
+  data: {
+    datasets: [
+      {
+        data: [
+          counter &&
+            counter.reduce(
+              (total, currentValue) => (total = total + currentValue.win),
+              0
+            ),
+          counter &&
+            counter.reduce(
+              (total, currentValue) => (total = total + currentValue.lose),
+              0
+            ),
+          counter &&
+            counter
+              .reduce(
+                (total, currentValue) => (total = total + currentValue.draw),
+                0
+              ),
+        ],
+        /**
+         * These colors come from Tailwind CSS palette
+         * https://tailwindcss.com/docs/customizing-colors/#default-color-palette
+         */
+        backgroundColor: ["#0694a2", "#1c64f2", "#7e3af2"],
+        label: "Dataset 1",
+      },
+    ],
+    labels: ["won", "lost", "draw"],
+  },
+  options: {
+    responsive: true,
+    cutoutPercentage: 80,
+  },
+  legend: {
+    display: false,
+  },
+};
    // pagination setup
   const resultsPerPage = 10
   const totalResults = response.length
@@ -108,15 +158,15 @@ function Dashboard() {
         </span> */}
       </div>
 
-      <h1>hello world</h1>
+      {/* <h1>hello world</h1>
 
-      {counter &&
-        counter
-          .slice(0, name)
-          .map((player) => <h1 key={player.id}>{player.opponent}</h1>)}
+      {team &&
+        team
+          .slice(0, 4)
+          .map((player) => <h1 key={player.id}>{player.name}</h1>)}
       {counter &&
         counter.reduce((total, currentValue) => (total = total + 1), 0)}
-      {name}
+      {name} */}
 
       {/* <!-- Cards --> */}
       <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
@@ -250,9 +300,75 @@ function Dashboard() {
           /> */}
         </TableFooter>
       </TableContainer>
+      {/* vs */}
+
+      <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4 pt-8">
+        {/* <InfoCard
+          title="Total Matches"
+          value={
+            counter &&
+            counter
+              .slice(0, name)
+              .reduce((total, currentValue) => (total = total + 1), 0)
+          }
+        >
+        </InfoCard> */}
+        {counter &&
+          counter.slice(0, 4).map((player) => (
+            <div key={player.id}>
+              <div class="w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                <div class="flex justify-end px-4 pt-4"></div>
+                <div class="flex flex-col items-center pb-10">
+                  <div className="flex">
+                    <img
+                      class="mb-3 w-20 h-20 rounded-full shadow-lg mx-2"
+                      src={
+                        team &&
+                        team.map((player1) => (
+                            player1.logo
+                        ))
+                      }
+                      alt="Bonnie image"
+                    />{" "}
+                    <img
+                      class="mb-3 w-20 h-20 rounded-full shadow-lg mx-2 object-scale-down"
+                      src={player.opponent_icon}
+                      alt="Bonnie image"
+                    />
+                  </div>
+                  <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+                    {player.goals} : {player.opponent_goals}
+                  </h5>
+                  <span class="text-sm text-gray-500 dark:text-gray-400">
+                    {team &&
+                      team.map((player1) => (
+                        <h1 key={player1.id}>
+                          {player1.name} vs {player.opponent}
+                        </h1>
+                      ))}
+                  </span>
+                  <div class="flex mt-4 space-x-3 md:mt-6">
+                    <a
+                      href="#"
+                      class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    >
+                      Videos
+                    </a>
+                    <a
+                      href="#"
+                      class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"
+                    >
+                      Analysis
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+      </div>
       <PageTitle>Charts</PageTitle>
       <div className="grid gap-6 mb-8 md:grid-cols-2">
-        <ChartCard title="gameplay">
+        <ChartCard title="total stats">
           <Doughnut {...doughnutOptions} />
           <ChartLegend legends={doughnutLegends} />
         </ChartCard>

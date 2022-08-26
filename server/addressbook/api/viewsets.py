@@ -88,5 +88,46 @@ class MatchViewSet(viewsets.ModelViewSet):
                 | models.Q(date__icontains=search)
                 | models.Q(opponent__icontains=search)
             )
-
         return qs3
+
+
+class PerformanceViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
+    queryset = Performance.objects.order_by("-date")
+    serializer_class = PerformanceSerializer
+
+    def get_queryset(self):
+        qs4 = super().get_queryset()
+        # Get only contact about current authenticated user
+        qs4 = qs4.filter(user=self.request.user)
+        # Add search capabilities
+        search = self.request.query_params.get("search", None)
+        if search:
+            qs4 = qs4.filter(
+                models.Q(name1__icontains=search)
+                | models.Q(tournament__icontains=search)
+                | models.Q(date__icontains=search)
+                | models.Q(position__icontains=search)
+            )
+        return qs4
+
+
+class VideoViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
+    queryset = Video.objects.order_by("-date")
+    serializer_class = VideoSerializer
+
+    def get_queryset(self):
+        qs5 = super().get_queryset()
+        # Get only contact about current authenticated user
+        qs5 = qs5.filter(user=self.request.user)
+        # Add search capabilities
+        search = self.request.query_params.get("search", None)
+        if search:
+            qs5 = qs5.filter(
+                models.Q(tournament__icontains=search)
+                | models.Q(type__icontains=search)
+                | models.Q(opponent__icontains=search)
+                | models.Q(date__icontains=search)
+            )
+        return qs5

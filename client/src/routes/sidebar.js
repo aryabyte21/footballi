@@ -19,7 +19,7 @@ const routes = [
   {
     path: '/app/cards',
     icon: 'CardsIcon',
-    name: 'Cards',
+    name: 'Videos',
   },
   {
     path: '/app/charts',
@@ -39,7 +39,7 @@ const routes = [
   {
     path: '/app/tables',
     icon: 'TablesIcon',
-    name: 'Tables',
+    name: 'Performance Table',
   },
   {
     icon: 'PagesIcon',

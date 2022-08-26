@@ -4,6 +4,7 @@ import PageTitle from '../components/Typography/PageTitle'
 import SectionTitle from '../components/Typography/SectionTitle'
 import CTA from '../components/CTA'
 import {
+  Input,
   Table,
   TableHeader,
   TableCell,
@@ -15,8 +16,11 @@ import {
   Avatar,
   Button,
   Pagination,
-} from '@windmill/react-ui'
+} from "@windmill/react-ui";
+import { SearchIcon } from '../icons';
 import { EditIcon, TrashIcon } from '../icons'
+import { rj, useRunRj } from "react-rocketjump";
+import { ajax } from "rxjs/ajax";
 
 import response from '../utils/demo/tableData'
 // make a copy of the data, for the second table
@@ -65,116 +69,116 @@ function Tables() {
     setDataTable2(response2.slice((pageTable2 - 1) * resultsPerPage, pageTable2 * resultsPerPage))
   }, [pageTable2])
 
+  const PerformanceState = rj({
+    effectCaller: rj.configured(),
+    effect:
+      (token) =>
+      (search = "") =>
+        ajax.getJSON(`/api/performance/?search=${search}`, {
+          Authorization: `Bearer ${token}`,
+        }),
+  });
+
+  
+  const [search, setSearch] = useState("");
+  const [{ data: performance }] = useRunRj(PerformanceState, [search], false);
   return (
     <>
-      <PageTitle>Tables</PageTitle>
-
+      <PageTitle>Performance Table</PageTitle>
       <CTA />
 
-      <SectionTitle>Simple table</SectionTitle>
-      <TableContainer className="mb-8">
-        <Table>
-          <TableHeader>
-            <tr>
-              <TableCell>Client</TableCell>
-              <TableCell>Amount</TableCell>
-              <TableCell>Status</TableCell>
-              <TableCell>Date</TableCell>
-            </tr>
-          </TableHeader>
-          <TableBody>
-            {dataTable1.map((user, i) => (
-              <TableRow key={i}>
-                <TableCell>
-                  <div className="flex items-center text-sm">
-                    {/* <Avatar className="hidden mr-3 md:block" src={user.avatar} alt="User avatar" /> */}
-                    <div>
-                      <p className="font-semibold">{user.name}</p>
-                      <p className="text-xs text-gray-600 dark:text-gray-400">{user.job}</p>
-                    </div>
-                  </div>
-                </TableCell>
-                <TableCell>
-                  <span className="text-sm">$ {user.amount}</span>
-                </TableCell>
-                <TableCell>
-                  <Badge type={user.status}>{user.status}</Badge>
-                </TableCell>
-                <TableCell>
-                  <span className="text-sm">{new Date(user.date).toLocaleDateString()}</span>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-        <TableFooter>
-          <Pagination
-            totalResults={totalResults}
-            resultsPerPage={resultsPerPage}
-            onChange={onPageChangeTable1}
-            label="Table navigation"
+      {/* <div className="flex justify-center flex-1 lg:mr-32 ">
+        <div className="relative w-full max-w-xl mr-6 focus-within:text-purple-500">
+          <input
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search the player"
+            className="pl-8 text-gray-700"
+            aria-label="Search"
           />
-        </TableFooter>
-      </TableContainer>
+        </div>
+      </div> */}
 
-      <SectionTitle>Table with actions</SectionTitle>
+      <div className="flex justify-center flex-1 lg:mr-32">
+        <div className="relative w-full max-w-xl mr-6 focus-within:text-purple-500">
+          <div className="absolute inset-y-0 flex items-center pl-2">
+            <SearchIcon className="w-4 h-4" aria-hidden="true" color="purple" />
+          </div>
+          <Input
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search the player"
+            aria-label="Search"
+            className="pl-8 text-gray-700"
+          />
+        </div>
+      </div>
+      <br />
+      {/* <SectionTitle>Simple table</SectionTitle> */}
       <TableContainer className="mb-8">
         <Table>
           <TableHeader>
             <tr>
-              <TableCell>Client</TableCell>
-              <TableCell>Amount</TableCell>
-              <TableCell>Status</TableCell>
+              <TableCell>Player</TableCell>
+              <TableCell>Tournament</TableCell>
+              <TableCell>Goals</TableCell>
               <TableCell>Date</TableCell>
-              <TableCell>Actions</TableCell>
+              <TableCell>Corners</TableCell>
+              <TableCell>Tackle Accuracy</TableCell>
+              <TableCell>Assists</TableCell>
+              <TableCell>balls recovered</TableCell>
+              <TableCell>fouls</TableCell>
             </tr>
           </TableHeader>
           <TableBody>
-            {dataTable2.map((user, i) => (
-              <TableRow key={i}>
-                <TableCell>
-                  <div className="flex items-center text-sm">
-                    <Avatar className="hidden mr-3 md:block" src={user.avatar} alt="User avatar" />
-                    <div>
-                      <p className="font-semibold">{user.name}</p>
-                      <p className="text-xs text-gray-600 dark:text-gray-400">{user.job}</p>
+            {performance &&
+              performance.map((user, i) => (
+                <TableRow key={i}>
+                  <TableCell>
+                    <div className="flex items-center text-sm">
+                      {/* <Avatar className="hidden mr-3 md:block" src={user.avatar} alt="User avatar" /> */}
+                      <div>
+                        <p className="font-semibold">{user.name1}</p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
+                          {user.position}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </TableCell>
-                <TableCell>
-                  <span className="text-sm">$ {user.amount}</span>
-                </TableCell>
-                <TableCell>
-                  <Badge type={user.status}>{user.status}</Badge>
-                </TableCell>
-                <TableCell>
-                  <span className="text-sm">{new Date(user.date).toLocaleDateString()}</span>
-                </TableCell>
-                <TableCell>
-                  <div className="flex items-center space-x-4">
-                    <Button layout="link" size="icon" aria-label="Edit">
-                      <EditIcon className="w-5 h-5" aria-hidden="true" />
-                    </Button>
-                    <Button layout="link" size="icon" aria-label="Delete">
-                      <TrashIcon className="w-5 h-5" aria-hidden="true" />
-                    </Button>
-                  </div>
-                </TableCell>
-              </TableRow>
-            ))}
+                  </TableCell>
+                  <TableCell>
+                    <span className="text-sm">{user.tournament}</span>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>{user.goals}</Badge>
+                  </TableCell>
+                  <TableCell>
+                    <span className="text-sm">
+                      {user.date}
+                    </span>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>{user.corners}</Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>{user.tackles_accuracy}%</Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>{user.assists}</Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>{user.recovered_balls}</Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>{user.fouls_commited}</Badge>
+                  </TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
-        <TableFooter>
-          <Pagination
-            totalResults={totalResults}
-            resultsPerPage={resultsPerPage}
-            onChange={onPageChangeTable2}
-            label="Table navigation"
-          />
-        </TableFooter>
+        <TableFooter></TableFooter>
       </TableContainer>
     </>
-  )
+  );
 }
 
 export default Tables

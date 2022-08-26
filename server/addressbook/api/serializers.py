@@ -62,3 +62,45 @@ class MatchSerializer(serializers.ModelSerializer):
     class Meta:
         model = Match
         exclude = ('user', )
+
+
+class MatchSerializer(serializers.ModelSerializer):
+
+    # Create new contact associated with current authenticated user
+    def create(self, validated_data):
+        user = self.context['request'].user
+        validated_data['user'] = user
+        match = super().create(validated_data)
+        return match
+
+    class Meta:
+        model = Match
+        exclude = ('user', )
+
+
+class PerformanceSerializer(serializers.ModelSerializer):
+
+    # Create new contact associated with current authenticated user
+    def create(self, validated_data):
+        user = self.context['request'].user
+        validated_data['user'] = user
+        performance = super().create(validated_data)
+        return performance
+
+    class Meta:
+        model = Performance
+        exclude = ('user', )
+
+
+class VideoSerializer(serializers.ModelSerializer):
+
+    # Create new contact associated with current authenticated user
+    def create(self, validated_data):
+        user = self.context['request'].user
+        validated_data['user'] = user
+        video = super().create(validated_data)
+        return video
+
+    class Meta:
+        model = Video
+        exclude = ('user', )
