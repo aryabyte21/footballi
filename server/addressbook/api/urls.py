@@ -24,7 +24,7 @@ router.register(r'match', MatchViewSet )
 urlpatterns += router.urls 
 router.register(r'performance', PerformanceViewSet)
 urlpatterns += router.urls
-router.register(r'video', PerformanceViewSet)
+router.register(r'video', VideoViewSet)
 urlpatterns += router.urls
 
 

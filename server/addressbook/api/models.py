@@ -77,7 +77,7 @@ class Performance(models.Model):
     tackles = models.IntegerField(default=0)
     penalties_taken = models.IntegerField(default=0)
     penalties_scored = models.IntegerField(default=0)
-
+    
     def __str__(self):
         return "%s - %s" % (self.name1, self.goals)
 class Video(models.Model):
@@ -88,4 +88,7 @@ class Video(models.Model):
     opponent = models.CharField(max_length = 200, default = None)
     tournament = models.CharField(max_length = 200, default = None)
     date = models.DateField(("Date"), default=date.today)
+    win_lose = models.CharField(max_length=4, default=None)
+    def __str__(self):
+        return "%s - %s" % (self.opponent, self.date)
     

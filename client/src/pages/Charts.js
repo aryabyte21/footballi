@@ -12,13 +12,16 @@ import {
   lineLegends,
   barLegends,
 } from '../utils/demo/chartsData'
-
+import * as d3 from "d3";
+// import { vz } from "@gjmcn/vizsla-and-vega-lite";
 function Charts() {
+
+
   return (
     <>
       <PageTitle>Charts</PageTitle>
 
-      <div className="grid gap-6 mb-8 md:grid-cols-2">
+      {/* <div className="grid gap-6 mb-8 md:grid-cols-2">
         <ChartCard title="Doughnut">
           <Doughnut {...doughnutOptions} />
           <ChartLegend legends={doughnutLegends} />
@@ -33,8 +36,9 @@ function Charts() {
           <Bar {...barOptions} />
           <ChartLegend legends={barLegends} />
         </ChartCard>
-      </div>
+      </div> */}      
     </>
+    
   )
 }
 
