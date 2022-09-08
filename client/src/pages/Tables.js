@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-
 import PageTitle from '../components/Typography/PageTitle'
 import SectionTitle from '../components/Typography/SectionTitle'
 import CTA from '../components/CTA'

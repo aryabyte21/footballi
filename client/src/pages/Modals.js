@@ -2,8 +2,10 @@ import React, { useState } from "react";
 
 import PageTitle from "../components/Typography/PageTitle";
 import CTA from "../components/CTA";
+import { SearchIcon } from "../icons";
 import {
   Modal,
+  Input,
   ModalHeader,
   ModalBody,
   ModalFooter,
@@ -25,6 +27,9 @@ import { ajax } from "rxjs/ajax";
 function Modals() {
   const [cardIndex, setcardIndex] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [cardIndex1, setcardIndex1] = useState(null);
+  const [isModalOpen1, setIsModalOpen1] = useState(false);
+
   const [isClicked, setIsClicked] = useState([]);
   //  const handleOpen = (id) => {
   //    // setIsClicked(isClicked.push(beers.filter((item) => item.id === id)));
@@ -77,18 +82,116 @@ function Modals() {
     setcardIndex(id);
     setIsModalOpen(true);
   }
+  function openModal1(id) {
+    console.log(id);
+    setcardIndex1(id);
+    setIsModalOpen1(true);
+  }
 
   function closeModal() {
     setIsModalOpen(false);
   }
+  function closeModal1() {
+    setIsModalOpen1(false);
+  }
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  function toggleDropdown() {
+    setIsOpen(!isOpen);
+  }
   return (
     <>
       <PageTitle>Modals</PageTitle>
       <CTA />
-      <div>
+      {/* <div>
         <Button onClick={openModal}>Open modal</Button>
+      </div> */}
+      <div className="flex justify-center flex-1 lg:mr-32">
+        <div className="relative w-full max-w-xl mr-6 focus-within:text-purple-500">
+          <div className="absolute inset-y-0 flex items-center pl-2">
+            <SearchIcon className="w-4 h-4" aria-hidden="true" color="purple" />
+          </div>
+          <Input
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search the player"
+            aria-label="Search"
+            className="pl-8 text-gray-700"
+          />
+        </div>
       </div>
+      <br />
+      <br />
+
+      <Modal
+        className="new"
+        isOpen={isModalOpen1}
+        toggle={(e) => openModal1(cardIndex1)}
+        onClose={closeModal1}
+      >
+        {cardIndex1}
+        <TableContainer className="mb-8">
+          <Table>
+            <TableHeader>
+              <tr>
+                <TableCell>Player</TableCell>
+                <TableCell>Tournament</TableCell>
+                <TableCell>Goals</TableCell>
+                <TableCell>Date</TableCell>
+                <TableCell>Corners</TableCell>
+                <TableCell>Tackle Accuracy</TableCell>
+                <TableCell>Assists</TableCell>
+                <TableCell>balls recovered</TableCell>
+                <TableCell>fouls</TableCell>
+              </tr>
+            </TableHeader>
+            <TableBody>
+              {performance &&
+                performance.filter(n => n.match === cardIndex1).map((user, i) => (
+                  <TableRow key={i}>
+                    <TableCell>
+                      <div className="flex items-center text-sm">
+                        {/* <Avatar className="hidden mr-3 md:block" src={user.avatar} alt="User avatar" /> */}
+                        <div>
+                          <p className="font-semibold">{user.name1}</p>
+                          <p className="text-xs text-gray-600 dark:text-gray-400">
+                            {user.position}
+                          </p>
+                        </div>
+                      </div>
+                    </TableCell>
+                    <TableCell>
+                      <span className="text-sm">{user.tournament}</span>
+                    </TableCell>
+                    <TableCell>
+                      <Badge type={user.status}>{user.goals}</Badge>
+                    </TableCell>
+                    <TableCell>
+                      <span className="text-sm">{user.date}</span>
+                    </TableCell>
+                    <TableCell>
+                      <Badge type={user.status}>{user.corners}</Badge>
+                    </TableCell>
+                    <TableCell>
+                      <Badge type={user.status}>{user.tackles_accuracy}%</Badge>
+                    </TableCell>
+                    <TableCell>
+                      <Badge type={user.status}>{user.assists}</Badge>
+                    </TableCell>
+                    <TableCell>
+                      <Badge type={user.status}>{user.recovered_balls}</Badge>
+                    </TableCell>
+                    <TableCell>
+                      <Badge type={user.status}>{user.fouls_commited}</Badge>
+                    </TableCell>
+                  </TableRow>
+                ))}
+            </TableBody>
+          </Table>
+          <TableFooter></TableFooter>
+        </TableContainer>
+      </Modal>
 
       <Modal
         isOpen={isModalOpen}
@@ -101,7 +204,13 @@ function Modals() {
               class="mb-3 w-20 h-20 rounded-full shadow-lg mx-2"
               src={team && team.map((player1) => player1.logo)}
               alt="Bonnie image"
-            />{" "}
+            />
+            <div className="text-3xl subpixel-antialiased	text-end px-2 py-3 dark:text-white">
+              {cardIndex !== null && counter && counter[cardIndex].goals} :{" "}
+              {cardIndex !== null &&
+                counter &&
+                counter[cardIndex].opponent_goals}
+            </div>
             <img
               class="mb-3 w-20 h-20 rounded-full shadow-lg mx-2 object-scale-down"
               src={
@@ -117,16 +226,17 @@ function Modals() {
         {/* <ModalHeader>
           {(cardIndex) => counter && counter[cardIndex].name}
         </ModalHeader> */}
+
         <ModalBody>
-          <TableContainer className="mb-8">
+          <TableContainer className="table-layout: auto">
             <Table>
               <TableHeader>
                 <tr>
-                  <TableCell>
+                  <TableCell className="text-center">
                     {team && team.map((player1) => player1.name)}
                   </TableCell>
-                  <TableCell></TableCell>
-                  <TableCell>
+                  <TableCell className="text-center"></TableCell>
+                  <TableCell className="text-center">
                     {cardIndex !== null &&
                       counter &&
                       counter[cardIndex].opponent}
@@ -135,7 +245,7 @@ function Modals() {
               </TableHeader>
               <TableBody>
                 <TableRow>
-                  <TableCell>
+                  <TableCell className="text-center">
                     <span className="text-sm">
                       <Badge type="success">
                         {cardIndex !== null &&
@@ -144,10 +254,10 @@ function Modals() {
                       </Badge>
                     </span>
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="text-center">
                     <span className="text-sm font-semibold">Goals</span>
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="text-center">
                     <span className="text-sm">
                       <Badge type="warning">
                         {cardIndex !== null &&
@@ -159,7 +269,7 @@ function Modals() {
                 </TableRow>
 
                 <TableRow>
-                  <TableCell>
+                  <TableCell className="text-center">
                     <span className="text-sm">
                       <Badge type="success">
                         {cardIndex !== null &&
@@ -168,10 +278,10 @@ function Modals() {
                       </Badge>
                     </span>
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="text-center">
                     <span className="text-sm font-semibold">Fouls</span>
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="text-center">
                     <span className="text-sm">
                       <Badge type="warning">
                         {cardIndex !== null &&
@@ -181,8 +291,9 @@ function Modals() {
                     </span>
                   </TableCell>
                 </TableRow>
+
                 <TableRow>
-                  <TableCell>
+                  <TableCell className="text-center">
                     <span className="text-sm">
                       <Badge type="success">
                         {cardIndex !== null &&
@@ -191,10 +302,10 @@ function Modals() {
                       </Badge>
                     </span>
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="text-center">
                     <span className="text-sm font-semibold">Yellow Cards</span>
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="text-center">
                     <span className="text-sm">
                       <Badge type="warning">
                         {cardIndex !== null &&
@@ -204,8 +315,9 @@ function Modals() {
                     </span>
                   </TableCell>
                 </TableRow>
+
                 <TableRow>
-                  <TableCell>
+                  <TableCell className="text-center">
                     <span className="text-sm">
                       <Badge type="success">
                         {cardIndex !== null &&
@@ -214,10 +326,10 @@ function Modals() {
                       </Badge>
                     </span>
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="text-center">
                     <span className="text-sm font-semibold">Red Cards</span>
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="text-center">
                     <span className="text-sm">
                       <Badge type="warning">
                         {cardIndex !== null &&
@@ -227,8 +339,9 @@ function Modals() {
                     </span>
                   </TableCell>
                 </TableRow>
+
                 <TableRow>
-                  <TableCell>
+                  <TableCell className="text-center">
                     <span className="text-sm">
                       <Badge type="success">
                         {cardIndex !== null &&
@@ -237,10 +350,10 @@ function Modals() {
                       </Badge>
                     </span>
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="text-center">
                     <span className="text-sm font-semibold">Passes</span>
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="text-center">
                     <span className="text-sm">
                       <Badge type="warning">
                         {cardIndex !== null &&
@@ -251,7 +364,7 @@ function Modals() {
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>
+                  <TableCell className="text-center">
                     <span className="text-sm">
                       <Badge type="success">
                         {cardIndex !== null &&
@@ -260,10 +373,10 @@ function Modals() {
                       </Badge>
                     </span>
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="text-center">
                     <span className="text-sm font-semibold">Tackles</span>
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="text-center">
                     <span className="text-sm">
                       <Badge type="warning">
                         {cardIndex !== null &&
@@ -274,7 +387,7 @@ function Modals() {
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>
+                  <TableCell className="text-center">
                     <span className="text-sm">
                       <Badge type="success">
                         {cardIndex !== null &&
@@ -283,10 +396,10 @@ function Modals() {
                       </Badge>
                     </span>
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="text-center">
                     <span className="text-sm font-semibold">Corners</span>
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="text-center">
                     <span className="text-sm">
                       <Badge type="warning">
                         {cardIndex !== null &&
@@ -297,7 +410,7 @@ function Modals() {
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>
+                  <TableCell className="text-center">
                     <span className="text-sm">
                       <Badge type="success">
                         {cardIndex !== null &&
@@ -306,10 +419,10 @@ function Modals() {
                       </Badge>
                     </span>
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="text-center">
                     <span className="text-sm font-semibold">Possession</span>
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="text-center">
                     <span className="text-sm">
                       <Badge type="warning">
                         {cardIndex !== null &&
@@ -320,7 +433,7 @@ function Modals() {
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>
+                  <TableCell className="text-center">
                     <span className="text-sm">
                       <Badge type="success">
                         {cardIndex !== null &&
@@ -329,10 +442,10 @@ function Modals() {
                       </Badge>
                     </span>
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="text-center">
                     <span className="text-sm font-semibold">Cross</span>
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="text-center">
                     <span className="text-sm">
                       <Badge type="warning">
                         {cardIndex !== null &&
@@ -383,7 +496,6 @@ function Modals() {
           }
         >
         </InfoCard> */}
-        {console.log(counter && counter[0].opponent_icon)}
         {counter &&
           counter.map((player, key) => (
             <div key={key}>
@@ -414,7 +526,12 @@ function Modals() {
                       ))}
                   </span>
                   <div class="flex mt-4 space-x-3 md:mt-6">
-                    <button class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    {/* <button class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"> */}
+                    <button
+                      key={key}
+                      class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                      onClick={(e) => openModal1(player.id)}
+                    >
                       Player
                     </button>
                     <button
