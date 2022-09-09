@@ -97,7 +97,13 @@ function Tables() {
           />
         </div>
       </div> */}
-
+      {performance &&
+        performance
+          .filter((n) => n.name1 === "Messi")
+          .reduce(
+            (total, currentValue) => (total = total + currentValue.goals),
+            0
+          )}
       <div className="flex justify-center flex-1 lg:mr-32">
         <div className="relative w-full max-w-xl mr-6 focus-within:text-purple-500">
           <div className="absolute inset-y-0 flex items-center pl-2">
@@ -151,9 +157,7 @@ function Tables() {
                     <Badge type={user.status}>{user.goals}</Badge>
                   </TableCell>
                   <TableCell>
-                    <span className="text-sm">
-                      {user.date}
-                    </span>
+                    <span className="text-sm">{user.date}</span>
                   </TableCell>
                   <TableCell>
                     <Badge type={user.status}>{user.corners}</Badge>

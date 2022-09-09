@@ -128,6 +128,7 @@ class VideoViewSet(viewsets.ModelViewSet):
                 models.Q(tournament__icontains=search)
                 | models.Q(type__icontains=search)
                 | models.Q(opponent__icontains=search)
-                | models.Q(date__icontains=search)
+                | models.Q(date__icontains=search) 
+                | models.Q(win_lose__icontains=search)
             )
         return qs5

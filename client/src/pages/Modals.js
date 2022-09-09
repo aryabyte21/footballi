@@ -125,72 +125,81 @@ function Modals() {
       <br />
 
       <Modal
-        className="new"
+        className="container mx-auto p-5"
         isOpen={isModalOpen1}
         toggle={(e) => openModal1(cardIndex1)}
         onClose={closeModal1}
       >
-        {cardIndex1}
-        <TableContainer className="mb-8">
-          <Table>
-            <TableHeader>
-              <tr>
-                <TableCell>Player</TableCell>
-                <TableCell>Tournament</TableCell>
-                <TableCell>Goals</TableCell>
-                <TableCell>Date</TableCell>
-                <TableCell>Corners</TableCell>
-                <TableCell>Tackle Accuracy</TableCell>
-                <TableCell>Assists</TableCell>
-                <TableCell>balls recovered</TableCell>
-                <TableCell>fouls</TableCell>
-              </tr>
-            </TableHeader>
-            <TableBody>
-              {performance &&
-                performance.filter(n => n.match === cardIndex1).map((user, i) => (
-                  <TableRow key={i}>
-                    <TableCell>
-                      <div className="flex items-center text-sm">
-                        {/* <Avatar className="hidden mr-3 md:block" src={user.avatar} alt="User avatar" /> */}
-                        <div>
-                          <p className="font-semibold">{user.name1}</p>
-                          <p className="text-xs text-gray-600 dark:text-gray-400">
-                            {user.position}
-                          </p>
-                        </div>
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <span className="text-sm">{user.tournament}</span>
-                    </TableCell>
-                    <TableCell>
-                      <Badge type={user.status}>{user.goals}</Badge>
-                    </TableCell>
-                    <TableCell>
-                      <span className="text-sm">{user.date}</span>
-                    </TableCell>
-                    <TableCell>
-                      <Badge type={user.status}>{user.corners}</Badge>
-                    </TableCell>
-                    <TableCell>
-                      <Badge type={user.status}>{user.tackles_accuracy}%</Badge>
-                    </TableCell>
-                    <TableCell>
-                      <Badge type={user.status}>{user.assists}</Badge>
-                    </TableCell>
-                    <TableCell>
-                      <Badge type={user.status}>{user.recovered_balls}</Badge>
-                    </TableCell>
-                    <TableCell>
-                      <Badge type={user.status}>{user.fouls_commited}</Badge>
-                    </TableCell>
-                  </TableRow>
-                ))}
-            </TableBody>
-          </Table>
-          <TableFooter></TableFooter>
-        </TableContainer>
+        <ModalBody>
+          <TableContainer className="mb-8 h-4/5 overflow-scroll">
+            <Table>
+              <TableHeader>
+                <tr>
+                  <TableCell>Player</TableCell>
+                  <TableCell>Tournament</TableCell>
+                  <TableCell>Goals</TableCell>
+                  <TableCell>Date</TableCell>
+                  <TableCell>Corners</TableCell>
+                  <TableCell>Tackle Accuracy</TableCell>
+                  <TableCell>Assists</TableCell>
+                  <TableCell>balls recovered</TableCell>
+                  <TableCell>fouls</TableCell>
+                </tr>
+              </TableHeader>
+              <TableBody>
+                {performance &&
+                  performance
+                    .filter((n) => n.match === cardIndex1)
+                    .map((user, i) => (
+                      <TableRow key={i}>
+                        <TableCell>
+                          <div className="flex items-center text-sm">
+                            {/* <Avatar className="hidden mr-3 md:block" src={user.avatar} alt="User avatar" /> */}
+                            <div>
+                              <p className="font-semibold">{user.name1}</p>
+                              <p className="text-xs text-gray-600 dark:text-gray-400">
+                                {user.position}
+                              </p>
+                            </div>
+                          </div>
+                        </TableCell>
+                        <TableCell>
+                          <span className="text-sm">{user.tournament}</span>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>{user.goals}</Badge>
+                        </TableCell>
+                        <TableCell>
+                          <span className="text-sm">{user.date}</span>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>{user.corners}</Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>
+                            {user.tackles_accuracy}%
+                          </Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>{user.assists}</Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>
+                            {user.recovered_balls}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>
+                            {user.fouls_commited}
+                          </Badge>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+              </TableBody>
+            </Table>
+            <TableFooter></TableFooter>
+          </TableContainer>
+        </ModalBody>
       </Modal>
 
       <Modal
