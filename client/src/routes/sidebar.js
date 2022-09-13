@@ -24,7 +24,7 @@ const routes = [
   {
     path: '/app/charts',
     icon: 'ChartsIcon',
-    name: 'Charts',
+    name: 'Visualize',
   },
   {
     path: '/app/buttons',
