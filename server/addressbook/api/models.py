@@ -78,7 +78,7 @@ class Performance(models.Model):
     match = models.ForeignKey(Match, models.CASCADE, default = None)
     user = models.ForeignKey(User, models.CASCADE, default = None)
     tournament = models.CharField(max_length=200, default=None)
-    date = models.DateField(("Date"), default=date.today)
+    date = models.DateField(("Date"), default=None)
     name1 = models.CharField(max_length=200, default=None)
     position = models.CharField(max_length=200, default=None)
     assists = models.IntegerField(default=0)

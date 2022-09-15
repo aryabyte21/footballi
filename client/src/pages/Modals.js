@@ -131,7 +131,7 @@ function Modals() {
         onClose={closeModal1}
       >
         <ModalBody>
-          <TableContainer className="mb-8 h-4/5 overflow-scroll">
+          <TableContainer className="border h-56 overflow-scroll">
             <Table>
               <TableHeader>
                 <tr>
