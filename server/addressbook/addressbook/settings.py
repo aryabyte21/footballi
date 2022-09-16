@@ -27,7 +27,7 @@ SECRET_KEY = 'ag!8d8rkcp4+94pq+xcc*+%hmptm2vv2h!b$zyuarx56v4dnb&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['api.sportskpi.com', '13.235.113.24']
 
 
 # Application definition
@@ -79,10 +79,10 @@ WSGI_APPLICATION = 'addressbook.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'footballpro',
+        'NAME': 'mynewdatabase',
         'USER': 'root',
-        'PASSWORD': 'mkh4yt5fn4',
-        'HOST': '127.0.0.1',
+        'PASSWORD': 'sportskpi@123',
+        'HOST': 'ec2-13-235-113-24.ap-south-1.compute.amazonaws.com',
         'PORT': '3306',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
