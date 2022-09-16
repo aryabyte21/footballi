@@ -27,7 +27,7 @@ SECRET_KEY = 'ag!8d8rkcp4+94pq+xcc*+%hmptm2vv2h!b$zyuarx56v4dnb&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['api.sportskpi.com', '13.235.113.24']
+ALLOWED_HOSTS = ['api.sportskpi.com', '3.110.127.1']
 
 
 # Application definition
@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': 'mynewdatabase',
         'USER': 'root',
         'PASSWORD': 'sportskpi@123',
-        'HOST': 'ec2-13-235-113-24.ap-south-1.compute.amazonaws.com',
+        'HOST': 'ec2-3-110-127-1.ap-south-1.compute.amazonaws.com',
         'PORT': '3306',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
