@@ -73,9 +73,12 @@ function Tables() {
     effect:
       (token) =>
       (search = "") =>
-        ajax.getJSON(`/api/performance/?search=${search}`, {
-          Authorization: `Bearer ${token}`,
-        }),
+        ajax.getJSON(
+          `https://api.sportskpi.com/api/performance/?search=${search}`,
+          {
+            Authorization: `Bearer ${token}`,
+          }
+        ),
   });
 
   const TeamState = rj({
@@ -83,7 +86,7 @@ function Tables() {
     effect:
       (token) =>
       (search = "") =>
-        ajax.getJSON(`/api/team/?search=${search}`, {
+        ajax.getJSON(`https://api.sportskpi.com/api/team/?search=${search}`, {
           Authorization: `Bearer ${token}`,
         }),
   });

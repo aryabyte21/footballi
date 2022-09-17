@@ -34,7 +34,7 @@ const PlayersState = rj({
   effect:
     (token) =>
     (search = "") =>
-      ajax.getJSON(`/api/players/?search=${search}`, {
+      ajax.getJSON(`https://api.sportskpi.com/api/players/?search=${search}`, {
         Authorization: `Bearer ${token}`,
       }),
 });
@@ -44,7 +44,7 @@ const CounterState = rj({
   effect:
     (token) =>
     (search = "") =>
-      ajax.getJSON(`/api/match/?search=${search}`, {
+      ajax.getJSON(`https://api.sportskpi.com/api/match/?search=${search}`, {
         Authorization: `Bearer ${token}`,
       }),
 });
@@ -54,7 +54,7 @@ const TeamState = rj({
   effect:
     (token) =>
     (search = "") =>
-      ajax.getJSON(`/api/team/?search=${search}`, {
+      ajax.getJSON(`https://api.sportskpi.com/api/team/?search=${search}`, {
         Authorization: `Bearer ${token}`,
       }),
 });

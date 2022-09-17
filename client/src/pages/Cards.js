@@ -28,7 +28,7 @@ const MatchState = rj({
   effect:
     (token) =>
     (search = "") =>
-      ajax.getJSON(`/api/match/?search=${search}`, {
+      ajax.getJSON(`https://api.sportskpi.com/api/match/?search=${search}`, {
         Authorization: `Bearer ${token}`,
       }),
 });
@@ -37,7 +37,7 @@ const VideoState = rj({
   effect:
     (token) =>
     (search = "") =>
-      ajax.getJSON(`/api/video/?search=${search}`, {
+      ajax.getJSON(`https://api.sportskpi.com/api/video/?search=${search}`, {
         Authorization: `Bearer ${token}`,
       }),
 });

@@ -48,7 +48,7 @@ function Modals() {
     effect:
       (token) =>
       (search = "") =>
-        ajax.getJSON(`/api/match/?search=${search}`, {
+        ajax.getJSON(`https://api.sportskpi.com/api/match/?search=${search}`, {
           Authorization: `Bearer ${token}`,
         }),
   });
@@ -58,7 +58,7 @@ function Modals() {
     effect:
       (token) =>
       (search = "") =>
-        ajax.getJSON(`/api/team/?search=${search}`, {
+        ajax.getJSON(`https://api.sportskpi.com/api/team/?search=${search}`, {
           Authorization: `Bearer ${token}`,
         }),
   });
@@ -68,9 +68,12 @@ function Modals() {
     effect:
       (token) =>
       (search = "") =>
-        ajax.getJSON(`/api/performance/?search=${search}`, {
-          Authorization: `Bearer ${token}`,
-        }),
+        ajax.getJSON(
+          `https://api.sportskpi.com/api/performance/?search=${search}`,
+          {
+            Authorization: `Bearer ${token}`,
+          }
+        ),
   });
 
   const [search, setSearch] = useState("");

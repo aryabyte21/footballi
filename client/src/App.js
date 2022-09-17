@@ -13,7 +13,7 @@ const ForgotPassword = lazy(() => import('./pages/ForgotPassword'))
 
 const login = (credentials = {}) =>
   ajax({
-    url: "/api/token/",
+    url: "https://api.sportskpi.com/api/token/",
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -27,13 +27,13 @@ const login = (credentials = {}) =>
   );
 
 const me = (token) =>
-  ajax.getJSON("/api/me/", {
+  ajax.getJSON("https://api.sportskpi.com/api/me/", {
     Authorization: `Bearer ${token}`,
   });
 
 const refresh = (refreshToken) =>
   ajax({
-    url: "/api/token/refresh/",
+    url: "https://api.sportskpi.com//api/token/refresh/",
     method: "POST",
     headers: {
       "Content-Type": "application/json",
