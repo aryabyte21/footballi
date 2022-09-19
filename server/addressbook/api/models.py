@@ -71,6 +71,10 @@ class Match(models.Model):
     away_possession = models.IntegerField(default=0)
     home_cross = models.IntegerField(default=0)
     away_cross = models.IntegerField(default=0)
+    home_shoton = models.IntegerField(default =0)
+    away_shoton = models.IntegerField(default=0)
+    home_shots = models.IntegerField(default=0)
+    away_shots = models.IntegerField(default=0)
 
     def __str__(self):
         return "%s - %s" % (self.tournament_name, self.date)

@@ -126,7 +126,6 @@ function Modals() {
       </div>
       <br />
       <br />
-
       <Modal
         className="container mx-auto p-5"
         isOpen={isModalOpen1}
@@ -134,7 +133,7 @@ function Modals() {
         onClose={closeModal1}
       >
         <ModalBody>
-          <TableContainer className="border h-56 overflow-scroll">
+          <TableContainer className="overflow-scroll" style={{ height: 600 }}>
             <Table>
               <TableHeader>
                 <tr>
@@ -262,19 +261,141 @@ function Modals() {
                       <Badge type="success">
                         {cardIndex !== null &&
                           counter &&
-                          counter[cardIndex].goals}
+                          counter[cardIndex].home_possession}{" "}
+                        %
                       </Badge>
                     </span>
                   </TableCell>
                   <TableCell className="text-center">
-                    <span className="text-sm font-semibold">Goals</span>
+                    <span className="text-sm font-semibold">Possession</span>
                   </TableCell>
                   <TableCell className="text-center">
                     <span className="text-sm">
                       <Badge type="warning">
                         {cardIndex !== null &&
                           counter &&
-                          counter[cardIndex].opponent_goals}
+                          counter[cardIndex].away_possession}{" "}
+                        %
+                      </Badge>
+                    </span>
+                  </TableCell>
+                </TableRow>
+
+                <TableRow>
+                  <TableCell className="text-center">
+                    <span className="text-sm">
+                      <Badge type="success">
+                        {cardIndex !== null &&
+                          counter &&
+                          counter[cardIndex].home_shots}
+                      </Badge>
+                    </span>
+                  </TableCell>
+                  <TableCell className="text-center">
+                    <span className="text-sm font-semibold">Shots</span>
+                  </TableCell>
+                  <TableCell className="text-center">
+                    <span className="text-sm">
+                      <Badge type="warning">
+                        {cardIndex !== null &&
+                          counter &&
+                          counter[cardIndex].away_shots}
+                      </Badge>
+                    </span>
+                  </TableCell>
+                </TableRow>
+
+                <TableRow>
+                  <TableCell className="text-center">
+                    <span className="text-sm">
+                      <Badge type="success">
+                        {cardIndex !== null &&
+                          counter &&
+                          counter[cardIndex].home_shoton}
+                      </Badge>
+                    </span>
+                  </TableCell>
+                  <TableCell className="text-center">
+                    <span className="text-sm font-semibold">Shots On</span>
+                  </TableCell>
+                  <TableCell className="text-center">
+                    <span className="text-sm">
+                      <Badge type="warning">
+                        {cardIndex !== null &&
+                          counter &&
+                          counter[cardIndex].away_shoton}
+                      </Badge>
+                    </span>
+                  </TableCell>
+                </TableRow>
+
+                <TableRow>
+                  <TableCell className="text-center">
+                    <span className="text-sm">
+                      <Badge type="success">
+                        {cardIndex !== null &&
+                          counter &&
+                          counter[cardIndex].home_tackles}
+                      </Badge>
+                    </span>
+                  </TableCell>
+                  <TableCell className="text-center">
+                    <span className="text-sm font-semibold">Tackles</span>
+                  </TableCell>
+                  <TableCell className="text-center">
+                    <span className="text-sm">
+                      <Badge type="warning">
+                        {cardIndex !== null &&
+                          counter &&
+                          counter[cardIndex].away_tackles}
+                      </Badge>
+                    </span>
+                  </TableCell>
+                </TableRow>
+
+                <TableRow>
+                  <TableCell className="text-center">
+                    <span className="text-sm">
+                      <Badge type="success">
+                        {cardIndex !== null &&
+                          counter &&
+                          counter[cardIndex].home_corners}
+                      </Badge>
+                    </span>
+                  </TableCell>
+                  <TableCell className="text-center">
+                    <span className="text-sm font-semibold">Corners</span>
+                  </TableCell>
+                  <TableCell className="text-center">
+                    <span className="text-sm">
+                      <Badge type="warning">
+                        {cardIndex !== null &&
+                          counter &&
+                          counter[cardIndex].away_corners}
+                      </Badge>
+                    </span>
+                  </TableCell>
+                </TableRow>
+
+                <TableRow>
+                  <TableCell className="text-center">
+                    <span className="text-sm">
+                      <Badge type="success">
+                        {cardIndex !== null &&
+                          counter &&
+                          counter[cardIndex].home_cross}
+                      </Badge>
+                    </span>
+                  </TableCell>
+                  <TableCell className="text-center">
+                    <span className="text-sm font-semibold">Cross</span>
+                  </TableCell>
+                  <TableCell className="text-center">
+                    <span className="text-sm">
+                      <Badge type="warning">
+                        {cardIndex !== null &&
+                          counter &&
+                          counter[cardIndex].away_cross}
                       </Badge>
                     </span>
                   </TableCell>
@@ -303,31 +424,6 @@ function Modals() {
                     </span>
                   </TableCell>
                 </TableRow>
-
-                <TableRow>
-                  <TableCell className="text-center">
-                    <span className="text-sm">
-                      <Badge type="success">
-                        {cardIndex !== null &&
-                          counter &&
-                          counter[cardIndex].home_yellow}
-                      </Badge>
-                    </span>
-                  </TableCell>
-                  <TableCell className="text-center">
-                    <span className="text-sm font-semibold">Yellow Cards</span>
-                  </TableCell>
-                  <TableCell className="text-center">
-                    <span className="text-sm">
-                      <Badge type="warning">
-                        {cardIndex !== null &&
-                          counter &&
-                          counter[cardIndex].away_yellow}
-                      </Badge>
-                    </span>
-                  </TableCell>
-                </TableRow>
-
                 <TableRow>
                   <TableCell className="text-center">
                     <span className="text-sm">
@@ -339,7 +435,7 @@ function Modals() {
                     </span>
                   </TableCell>
                   <TableCell className="text-center">
-                    <span className="text-sm font-semibold">Red Cards</span>
+                    <span className="text-sm font-semibold">Red Card</span>
                   </TableCell>
                   <TableCell className="text-center">
                     <span className="text-sm">
@@ -351,118 +447,25 @@ function Modals() {
                     </span>
                   </TableCell>
                 </TableRow>
-
                 <TableRow>
                   <TableCell className="text-center">
                     <span className="text-sm">
                       <Badge type="success">
                         {cardIndex !== null &&
                           counter &&
-                          counter[cardIndex].home_passes}
+                          counter[cardIndex].home_yellow}
                       </Badge>
                     </span>
                   </TableCell>
                   <TableCell className="text-center">
-                    <span className="text-sm font-semibold">Passes</span>
+                    <span className="text-sm font-semibold">Yellow Card</span>
                   </TableCell>
                   <TableCell className="text-center">
                     <span className="text-sm">
                       <Badge type="warning">
                         {cardIndex !== null &&
                           counter &&
-                          counter[cardIndex].away_passes}
-                      </Badge>
-                    </span>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="text-center">
-                    <span className="text-sm">
-                      <Badge type="success">
-                        {cardIndex !== null &&
-                          counter &&
-                          counter[cardIndex].home_tackles}
-                      </Badge>
-                    </span>
-                  </TableCell>
-                  <TableCell className="text-center">
-                    <span className="text-sm font-semibold">Tackles</span>
-                  </TableCell>
-                  <TableCell className="text-center">
-                    <span className="text-sm">
-                      <Badge type="warning">
-                        {cardIndex !== null &&
-                          counter &&
-                          counter[cardIndex].away_tackles}
-                      </Badge>
-                    </span>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="text-center">
-                    <span className="text-sm">
-                      <Badge type="success">
-                        {cardIndex !== null &&
-                          counter &&
-                          counter[cardIndex].home_corners}
-                      </Badge>
-                    </span>
-                  </TableCell>
-                  <TableCell className="text-center">
-                    <span className="text-sm font-semibold">Corners</span>
-                  </TableCell>
-                  <TableCell className="text-center">
-                    <span className="text-sm">
-                      <Badge type="warning">
-                        {cardIndex !== null &&
-                          counter &&
-                          counter[cardIndex].away_corners}
-                      </Badge>
-                    </span>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="text-center">
-                    <span className="text-sm">
-                      <Badge type="success">
-                        {cardIndex !== null &&
-                          counter &&
-                          counter[cardIndex].home_possession}
-                      </Badge>
-                    </span>
-                  </TableCell>
-                  <TableCell className="text-center">
-                    <span className="text-sm font-semibold">Possession</span>
-                  </TableCell>
-                  <TableCell className="text-center">
-                    <span className="text-sm">
-                      <Badge type="warning">
-                        {cardIndex !== null &&
-                          counter &&
-                          counter[cardIndex].away_possession}
-                      </Badge>
-                    </span>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="text-center">
-                    <span className="text-sm">
-                      <Badge type="success">
-                        {cardIndex !== null &&
-                          counter &&
-                          counter[cardIndex].home_cross}
-                      </Badge>
-                    </span>
-                  </TableCell>
-                  <TableCell className="text-center">
-                    <span className="text-sm font-semibold">Cross</span>
-                  </TableCell>
-                  <TableCell className="text-center">
-                    <span className="text-sm">
-                      <Badge type="warning">
-                        {cardIndex !== null &&
-                          counter &&
-                          counter[cardIndex].away_cross}
+                          counter[cardIndex].away_yellow}
                       </Badge>
                     </span>
                   </TableCell>

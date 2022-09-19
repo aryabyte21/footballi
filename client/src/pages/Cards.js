@@ -477,7 +477,7 @@ function Cards() {
           ))}
       </div>
 
-      <SectionTitle>Full Matches</SectionTitle>
+      {/* <SectionTitle>Full Matches</SectionTitle>
 
       <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
         {match &&
@@ -513,15 +513,7 @@ function Cards() {
             <div key={m.id}>
               <Card>
                 <a href="" class="block overflow-hidden rounded-2xl">
-                  {/* <img
-                    class="object-cover w-full h-32"
-                    src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-                    alt=""
-                  /> */}
-                  {/* <iframe
-                    class="w-full aspect-video ..."
-                    src="https://www.youtube.com/embed/v=h4m68r8kWAc"
-                  ></iframe> */}
+   
                   <iframe
                     class="w-full aspect-video ..."
                     src={m.first_half}
@@ -536,9 +528,7 @@ function Cards() {
                     </p>
 
                     <h5 class="text-xs text-white"> {m.opponent}</h5>
-                    {/* <p class="mt-1 text-xs text-gray-500">
-               PSG vs ManCity
-              </p> */}
+                 
                   </div>
                 </a>
               </Card>
@@ -553,15 +543,6 @@ function Cards() {
             <div key={m.id}>
               <Card>
                 <a href="" class="block overflow-hidden rounded-2xl">
-                  {/* <img
-                    class="object-cover w-full h-32"
-                    src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-                    alt=""
-                  /> */}
-                  {/* <iframe
-                    class="w-full aspect-video ..."
-                    src="https://www.youtube.com/embed/v=h4m68r8kWAc"
-                  ></iframe> */}
                   <iframe
                     class="w-full aspect-video ..."
                     src={m.second_half}
@@ -576,17 +557,14 @@ function Cards() {
                     </p>
 
                     <h5 class="text-xs text-white"> {m.opponent}</h5>
-                    {/* <p class="mt-1 text-xs text-gray-500">
-               PSG vs ManCity
-              </p> */}
                   </div>
                 </a>
               </Card>
             </div>
           ))}
-      </div>
+      </div> */}
 
-      <SectionTitle>Cards with title</SectionTitle>
+      {/* <SectionTitle>Cards with title</SectionTitle>
 
       <div className="grid gap-6 mb-8 md:grid-cols-2">
         <Card>
@@ -614,7 +592,7 @@ function Cards() {
             </p>
           </CardBody>
         </Card>
-      </div>
+      </div> */}
     </>
   );
 }

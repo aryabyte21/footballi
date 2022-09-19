@@ -189,19 +189,16 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-
-
 Stats on click on dashboard
-
-remove goals in stats column 
+remove goals in stats column  
 sequence
 0. possesion (% in the title)
 1. shots (on+off)
-2. tackles
-3. corners
-4. freeckick
-5. crosses
-6. fouls
-7. red card
-8. yellow card
-addition of all performance table
+2. shots on
+3. tackles
+4. corners
+5. freeckick
+6. crosses
+7. fouls
+8. red card
+9. yellow card

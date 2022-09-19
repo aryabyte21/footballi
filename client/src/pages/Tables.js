@@ -142,7 +142,6 @@ function Tables() {
               <TableCell>Player</TableCell>
               <TableCell>Tournament</TableCell>
               <TableCell>Goals</TableCell>
-              <TableCell>Date</TableCell>
               <TableCell>Corners</TableCell>
               <TableCell>Tackle Accuracy</TableCell>
               <TableCell>Assists</TableCell>
@@ -171,9 +170,9 @@ function Tables() {
                   <TableCell>
                     <Badge type={user.status}>{user.goals}</Badge>
                   </TableCell>
-                  <TableCell>
+                  {/* <TableCell>
                     <span className="text-sm">{user.date}</span>
-                  </TableCell>
+                  </TableCell> */}
                   <TableCell>
                     <Badge type={user.status}>{user.corners}</Badge>
                   </TableCell>
