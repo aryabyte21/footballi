@@ -33,7 +33,7 @@ const me = (token) =>
 
 const refresh = (refreshToken) =>
   ajax({
-    url: "https://api.sportskpi.com//api/token/refresh/",
+    url: "https://api.sportskpi.com/api/token/refresh/",
     method: "POST",
     headers: {
       "Content-Type": "application/json",
