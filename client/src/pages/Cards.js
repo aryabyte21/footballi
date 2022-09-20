@@ -68,7 +68,6 @@ function Cards() {
           <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
           </svg>
-          
         </div>
         <span>
           View more{" "}
@@ -450,31 +449,32 @@ function Cards() {
 
       <SectionTitle>All Videos</SectionTitle>
       <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+        {/* using filter method over here very important!!! */}
         {v &&
-          v.map((m) => (
-            <div key={m.id}>
-              <Card>
-                <a href="" class="block overflow-hidden rounded-2xl">
-                  <video
-                    class="w-full aspect-video ..."
-                    allowfullscreen
-                    controls
-                  >
-                    <source src={m.video} />
-                    frameborder = "0" allow="accelerometer; gyroscope;
-                    clipboard-write; encrypted-media; gyroscope;
-                    picture-in-picture; allowfullscreen;"
-                  </video>
-                  <div class="p-4 bg-gray-700">
-                    <p class="text-xs text-gray-500">
-                      {m.type} | {m.tournament} {m.date} | {m.win_lose}
-                    </p>
-                    <h5 class="text-xs text-white"> {m.opponent}</h5>
-                  </div>
-                </a>
-              </Card>
-            </div>
-          ))}
+          v.filter((n) => n.type === "attack").map((m) => (
+              <div key={m.id}>
+                <Card>
+                  <a href="" class="block overflow-hidden rounded-2xl">
+                    <video
+                      class="w-full aspect-video ..."
+                      allowfullscreen
+                      controls
+                    >
+                      <source src={m.video} />
+                      frameborder = "0" allow="accelerometer; gyroscope;
+                      clipboard-write; encrypted-media; gyroscope;
+                      picture-in-picture; allowfullscreen;"
+                    </video>
+                    <div class="p-4 bg-gray-700">
+                      <p class="text-xs text-gray-500">
+                        {m.type} | {m.tournament} {m.date} | {m.win_lose}
+                      </p>
+                      <h5 class="text-xs text-white"> {m.opponent}</h5>
+                    </div>
+                  </a>
+                </Card>
+              </div>
+            ))}
       </div>
 
       {/* <SectionTitle>Full Matches</SectionTitle>

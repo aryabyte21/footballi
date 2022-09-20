@@ -138,14 +138,16 @@ function Modals() {
               <TableHeader>
                 <tr>
                   <TableCell>Player</TableCell>
-                  <TableCell>Tournament</TableCell>
                   <TableCell>Goals</TableCell>
-                  <TableCell>Date</TableCell>
                   <TableCell>Corners</TableCell>
                   <TableCell>Tackle Accuracy</TableCell>
                   <TableCell>Assists</TableCell>
-                  <TableCell>balls recovered</TableCell>
+                  <TableCell>Tackles</TableCell>
+                  <TableCell>Freekicks</TableCell>
+                  <TableCell>Corners</TableCell>
                   <TableCell>fouls</TableCell>
+                  <TableCell>Red Card</TableCell>
+                  <TableCell>Yellow Card</TableCell>
                 </tr>
               </TableHeader>
               <TableBody>
@@ -166,13 +168,7 @@ function Modals() {
                           </div>
                         </TableCell>
                         <TableCell>
-                          <span className="text-sm">{user.tournament}</span>
-                        </TableCell>
-                        <TableCell>
                           <Badge type={user.status}>{user.goals}</Badge>
-                        </TableCell>
-                        <TableCell>
-                          <span className="text-sm">{user.date}</span>
                         </TableCell>
                         <TableCell>
                           <Badge type={user.status}>{user.corners}</Badge>
@@ -187,13 +183,25 @@ function Modals() {
                         </TableCell>
                         <TableCell>
                           <Badge type={user.status}>
-                            {user.recovered_balls}
+                            {user.tackles}
                           </Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>{user.freekicks}</Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>{user.corners}</Badge>
                         </TableCell>
                         <TableCell>
                           <Badge type={user.status}>
                             {user.fouls_commited}
                           </Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>{user.reds}</Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>{user.yellows}</Badge>
                         </TableCell>
                       </TableRow>
                     ))}

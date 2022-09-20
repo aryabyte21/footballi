@@ -1,16 +1,24 @@
-import { lazy } from 'react'
+import { lazy } from "react";
 
 // use lazy for better code splitting, a.k.a. load faster
-const Dashboard = lazy(() => import('../pages/Dashboard'))
-const Forms = lazy(() => import('../pages/Forms'))
-const Cards = lazy(() => import('../pages/Cards'))
-const Charts = lazy(() => import('../pages/Charts'))
-const Buttons = lazy(() => import('../pages/Buttons'))
-const Modals = lazy(() => import('../pages/Modals'))
-const Tables = lazy(() => import('../pages/Tables'))
-const Page404 = lazy(() => import('../pages/404'))
-const Blank = lazy(() => import('../pages/Blank'))
-
+const Dashboard = lazy(() => import("../pages/Dashboard"));
+const Forms = lazy(() => import("../pages/Forms"));
+const Cards = lazy(() => import("../pages/Cards"));
+const Charts = lazy(() => import("../pages/Charts"));
+const Buttons = lazy(() => import("../pages/Buttons"));
+const Modals = lazy(() => import("../pages/Modals"));
+const Tables = lazy(() => import("../pages/Tables"));
+const Page404 = lazy(() => import("../pages/404"));
+const Blank = lazy(() => import("../pages/Blank"));
+const Analyst_insights = lazy(() => import("../pages/Videos/Analyst_insights"));
+const Attacking = lazy(() => import("../pages/Videos/Attacking"));
+const Corners = lazy(() => import("../pages/Videos/Corners"));
+const Defending = lazy(() => import("../pages/Videos/Defending"));
+const Freekick = lazy(() => import("../pages/Videos/Freekick"));
+const Full_match = lazy(() => import("../pages/Videos/Full_matches"));
+const Goals_conceded = lazy(() => import("../pages/Videos/Goals"));
+const Goals_scored = lazy(() => import("../pages/Videos/Goals_scored"));
+const Transd = lazy(() => import("../pages/Videos/Transd"));
 /**
  * ⚠ These are internal routes!
  * They will be rendered inside the app, using the default `containers/Layout`.
@@ -23,41 +31,77 @@ const Blank = lazy(() => import('../pages/Blank'))
  */
 const routes = [
   {
-    path: '/dashboard', // the url
+    path: "/dashboard", // the url
     component: Dashboard, // view rendered
   },
   {
-    path: '/forms',
+    path: "/forms",
     component: Forms,
   },
   {
-    path: '/cards',
+    path: "/cards",
     component: Cards,
   },
   {
-    path: '/charts',
+    path: "/charts",
     component: Charts,
   },
   {
-    path: '/buttons',
+    path: "/buttons",
     component: Buttons,
   },
   {
-    path: '/modals',
+    path: "/modals",
     component: Modals,
   },
   {
-    path: '/tables',
+    path: "/tables",
     component: Tables,
   },
   {
-    path: '/404',
+    path: "/404",
     component: Page404,
   },
   {
-    path: '/blank',
+    path: "/blank",
     component: Blank,
   },
-]
+  {
+    path: "/Analyst_insights",
+    component: Analyst_insights,
+  },
+  {
+    path: "/Attacking",
+    component: Attacking,
+  },
+  {
+    path: "/Corners",
+    component: Corners,
+  },
+  {
+    path: "/Defending",
+    component: Defending,
+  },
+  {
+    path: "/Freekick",
+    component: Freekick,
+  },
+  {
+    path: "/Full_match",
+    component: Full_match,
+  },
+  {
+    path: "/Goals",
+    component: Goals_conceded,
+  },
+  {
+    path: "/Goals_scored",
+    component: Goals_scored,
+  },
+  {
+    path: "/Transd",
+    component: Transd,
+  },
+];
 
-export default routes
+export default routes;

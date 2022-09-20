@@ -7,24 +7,24 @@
  */
 const routes = [
   {
-    path: '/app/dashboard', // the url
-    icon: 'HomeIcon', // the component being exported from icons/index.js
-    name: 'Dashboard', // name that appear in Sidebar
+    path: "/app/dashboard", // the url
+    icon: "HomeIcon", // the component being exported from icons/index.js
+    name: "Dashboard", // name that appear in Sidebar
   },
   // {
   //   path: '/app/forms',
   //   icon: 'FormsIcon',
   //   name: 'Forms',
   // },
+  // {
+  //   path: "/app/cards",
+  //   icon: "CardsIcon",
+  //   name: "Videos",
+  // },
   {
-    path: '/app/cards',
-    icon: 'CardsIcon',
-    name: 'Videos',
-  },
-  {
-    path: '/app/charts',
-    icon: 'ChartsIcon',
-    name: 'Visualize',
+    path: "/app/charts",
+    icon: "ChartsIcon",
+    name: "Visualize",
   },
   // {
   //   path: '/app/buttons',
@@ -32,42 +32,54 @@ const routes = [
   //   name: 'Buttons',
   // },
   {
-    path: '/app/modals',
-    icon: 'ModalsIcon',
-    name: 'Modals',
+    path: "/app/modals",
+    icon: "ModalsIcon",
+    name: "Stats",
   },
   {
-    path: '/app/tables',
-    icon: 'TablesIcon',
-    name: 'Performance Table',
+    path: "/app/tables",
+    icon: "TablesIcon",
+    name: "Performance Table",
   },
-  // {
-  //   icon: 'PagesIcon',
-  //   name: 'Pages',
-  //   routes: [
-  //     // submenu
-  //     {
-  //       path: '/login',
-  //       name: 'Login',
-  //     },
-  //     {
-  //       path: '/create-account',
-  //       name: 'Create account',
-  //     },
-  //     {
-  //       path: '/forgot-password',
-  //       name: 'Forgot password',
-  //     },
-  //     {
-  //       path: '/app/404',
-  //       name: '404',
-  //     },
-  //     {
-  //       path: '/app/blank',
-  //       name: 'Blank',
-  //     },
-  //   ],
-  // },
-]
+  {
+    icon: "CardsIcon",
+    name: "Videos",
+    routes: [
+      // submenu
+      {
+        path: "/app/Full_match",
+        name: "Full Matches",
+      },
+      {
+        path: "/app/Analyst_insights",
+        name: "Analyst Insights",
+      },
+      {
+        path: "/app/Attacking",
+        name: "Attacking",
+      },
+      {
+        path: "/app/Corners",
+        name: "Corners",
+      },
+      {
+        path: "/app/Defending",
+        name: "Defending",
+      },
+      {
+        path: "/app/Freekick",
+        name: "Freekick",
+      },
+      {
+        path: "/app/Goals",
+        name: "Goals",
+      },
+      {
+        path:"/app/Transd",
+        name:"Transition",
+      },
+    ],
+  },
+];
 
 export default routes

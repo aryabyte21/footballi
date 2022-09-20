@@ -190,7 +190,8 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 Stats on click on dashboard
-remove goals in stats column  
+
+<!-- remove goals in stats column  
 sequence
 0. possesion (% in the title)
 1. shots (on+off)
@@ -201,4 +202,44 @@ sequence
 6. crosses
 7. fouls
 8. red card
-9. yellow card
+9. yellow card -->
+
+bring nationality in player info
+
+# players
+mins_played
+<!-- goals -->
+<!-- assist -->
+shots
+shots on
+crosses
+<!-- tackles -->
+<!-- corners -->
+<!-- freeckicks -->
+saves
+<!-- yellow card -->
+<!-- red cards -->
+interception
+aerial duels
+
+# speak with mam to check if cumulative data of player performance would be available
+
+
+# videos
+video order
+full matches 
+analyst insights
+goals scored
+goals conceded
+attacking
+defending
+trans (attack to defence)
+transition(defence to attack)
+corners
+freekick
+
+make different columns for goals conceded and goals scored
+
+# to restart gunicorn use  kill -HUP 12772
+
+{/* using filter method over here very important!!! */}

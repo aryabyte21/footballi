@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react'
-import CTA from '../components/CTA'
-import InfoCard from '../components/Cards/InfoCard'
-import ChartCard from '../components/Chart/ChartCard'
-import { Doughnut, Line } from 'react-chartjs-2'
-import ChartLegend from '../components/Chart/ChartLegend'
-import PageTitle from '../components/Typography/PageTitle'
-import { sad, won, match, draw } from '../icons'
-import RoundIcon from '../components/RoundIcon'
-import response from '../utils/demo/tableData'
+import React, { useState, useEffect } from "react";
+import CTA from "../components/CTA";
+import InfoCard from "../components/Cards/InfoCard";
+import ChartCard from "../components/Chart/ChartCard";
+import { Doughnut, Line } from "react-chartjs-2";
+import ChartLegend from "../components/Chart/ChartLegend";
+import PageTitle from "../components/Typography/PageTitle";
+import { sad, won, match, draw } from "../icons";
+import RoundIcon from "../components/RoundIcon";
+import response from "../utils/demo/tableData";
 import {
   TableBody,
   TableContainer,
@@ -20,13 +20,16 @@ import {
   Badge,
   Pagination,
   Input,
-} from '@windmill/react-ui'
+} from "@windmill/react-ui";
+import Finals1 from "../pages/images/Finals1.png";
+import Finals2 from "../pages/images/Finals2.png";
+
 
 import {
   lineOptions,
   doughnutLegends,
   lineLegends,
-} from '../utils/demo/chartsData'
+} from "../utils/demo/chartsData";
 import { rj, useRunRj } from "react-rocketjump";
 import { ajax } from "rxjs/ajax";
 const PlayersState = rj({
@@ -60,72 +63,71 @@ const TeamState = rj({
 });
 
 function Dashboard() {
-  const [page, setPage] = useState(1)
-  const [data, setData] = useState([])
+  const [page, setPage] = useState(1);
+  const [data, setData] = useState([]);
   //player data
-   const [search, setSearch] = useState("");
-   const [{ data: players}] = useRunRj(PlayersState, [search], false);
+  const [search, setSearch] = useState("");
+  const [{ data: players }] = useRunRj(PlayersState, [search], false);
   const [{ data: counter }] = useRunRj(CounterState, [search], false);
-    const [{ data: team }] = useRunRj(TeamState, [search], false);
+  const [{ data: team }] = useRunRj(TeamState, [search], false);
 
   // const sum1 = counter.reduce((total, currentValue)=>total = total + currentValue.win, 0);
-const doughnutOptions = {
-  data: {
-    datasets: [
-      {
-        data: [
-          counter &&
-            counter.reduce(
-              (total, currentValue) => (total = total + currentValue.win),
-              0
-            ),
-          counter &&
-            counter.reduce(
-              (total, currentValue) => (total = total + currentValue.lose),
-              0
-            ),
-          counter &&
-            counter
-              .reduce(
+  const doughnutOptions = {
+    data: {
+      datasets: [
+        {
+          data: [
+            counter &&
+              counter.reduce(
+                (total, currentValue) => (total = total + currentValue.win),
+                0
+              ),
+            counter &&
+              counter.reduce(
+                (total, currentValue) => (total = total + currentValue.lose),
+                0
+              ),
+            counter &&
+              counter.reduce(
                 (total, currentValue) => (total = total + currentValue.draw),
                 0
               ),
-        ],
-        /**
-         * These colors come from Tailwind CSS palette
-         * https://tailwindcss.com/docs/customizing-colors/#default-color-palette
-         */
-        backgroundColor: ["#0694a2", "#1c64f2", "#7e3af2"],
-        label: "Dataset 1",
-      },
-    ],
-    labels: ["won", "lost", "draw"],
-  },
-  options: {
-    responsive: true,
-    cutoutPercentage: 80,
-  },
-  legend: {
-    display: false,
-  },
-};
-   // pagination setup
-  const resultsPerPage = 10
-  const totalResults = response.length
-  const [name, setName] = useState(10);
-   const handleSubmit = (evt) => {
-     evt.preventDefault();
-   };
+          ],
+          /**
+           * These colors come from Tailwind CSS palette
+           * https://tailwindcss.com/docs/customizing-colors/#default-color-palette
+           */
+          backgroundColor: ["#0694a2", "#1c64f2", "#7e3af2"],
+          label: "Dataset 1",
+        },
+      ],
+      labels: ["won", "lost", "draw"],
+    },
+    options: {
+      responsive: true,
+      cutoutPercentage: 80,
+    },
+    legend: {
+      display: false,
+    },
+  };
+  // pagination setup
+  const resultsPerPage = 10;
+  const totalResults = response.length;
+  const [name, setName] = useState(4);
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+  };
   // pagination change control
   function onPageChange(p) {
-    setPage(p)
+    setPage(p);
   }
 
   // on page change, load new sliced data
   // here you would make another server request for new data
   useEffect(() => {
-    setData(response.slice((page - 1) * resultsPerPage, page * resultsPerPage))
-  }, [page])
+    setData(response.slice((page - 1) * resultsPerPage, page * resultsPerPage));
+  }, [page]);
 
   return (
     <>
@@ -247,6 +249,55 @@ const doughnutOptions = {
           />
         </InfoCard>
       </div>
+      <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4 pt-8">
+        {counter &&
+          counter.slice(0, 4).map((player) => (
+            <div key={player.id}>
+              <div class="w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                <div class="flex justify-end px-4 pt-4"></div>
+                <div class="flex flex-col items-center pb-10">
+                  <div className="flex">
+                    <img
+                      class="mb-3 w-20 h-20 rounded-full shadow-lg mx-2"
+                      src={team && team.map((player1) => player1.logo)}
+                      alt="Bonnie image"
+                    />{" "}
+                    <img
+                      class="mb-3 w-20 h-20 rounded-full shadow-lg mx-2 object-scale-down"
+                      src={player.opponent_icon}
+                      alt="Bonnie image"
+                    />
+                  </div>
+                  <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+                    {player.goals} : {player.opponent_goals}
+                  </h5>
+                  <span class="text-sm text-gray-500 dark:text-gray-400">
+                    {team &&
+                      team.map((player1) => (
+                        <h1 key={player1.id}>
+                          {player1.name} vs {player.opponent}
+                        </h1>
+                      ))}
+                  </span>
+                  <div class="flex mt-4 space-x-3 md:mt-6">
+                    <a
+                      href="#"
+                      class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    >
+                      Videos
+                    </a>
+                    <a
+                      href="/app/modals"
+                      class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"
+                    >
+                      Stats
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+      </div>
       <TableContainer>
         <div className="h-64 overflow-scroll">
           <Table>
@@ -291,80 +342,13 @@ const doughnutOptions = {
             </TableBody>
           </Table>
         </div>
-        <TableFooter>
-          {/* <Pagination
-            totalResults={totalResults}
-            resultsPerPage={resultsPerPage}
-            label="Table navigation"
-            onChange={onPageChange}
-          /> */}
-        </TableFooter>
+        <TableFooter></TableFooter>
       </TableContainer>
-      {/* vs */}
+      <br/>
 
-      <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4 pt-8">
-        {/* <InfoCard
-          title="Total Matches"
-          value={
-            counter &&
-            counter
-              .slice(0, name)
-              .reduce((total, currentValue) => (total = total + 1), 0)
-          }
-        >
-        </InfoCard> */}
-        {counter &&
-          counter.slice(0, 4).map((player) => (
-            <div key={player.id}>
-              <div class="w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-                <div class="flex justify-end px-4 pt-4"></div>
-                <div class="flex flex-col items-center pb-10">
-                  <div className="flex">
-                    <img
-                      class="mb-3 w-20 h-20 rounded-full shadow-lg mx-2"
-                      src={
-                        team &&
-                        team.map((player1) => (
-                            player1.logo
-                        ))
-                      }
-                      alt="Bonnie image"
-                    />{" "}
-                    <img
-                      class="mb-3 w-20 h-20 rounded-full shadow-lg mx-2 object-scale-down"
-                      src={player.opponent_icon}
-                      alt="Bonnie image"
-                    />
-                  </div>
-                  <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
-                    {player.goals} : {player.opponent_goals}
-                  </h5>
-                  <span class="text-sm text-gray-500 dark:text-gray-400">
-                    {team &&
-                      team.map((player1) => (
-                        <h1 key={player1.id}>
-                          {player1.name} vs {player.opponent}
-                        </h1>
-                      ))}
-                  </span>
-                  <div class="flex mt-4 space-x-3 md:mt-6">
-                    <a
-                      href="#"
-                      class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                    >
-                      Videos
-                    </a>
-                    <a
-                      href="#"
-                      class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"
-                    >
-                      Analysis
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+      <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-2">
+        <img src={Finals1} alt="horse" />
+        <img src={Finals2} alt="horse" />
       </div>
       <PageTitle>Charts</PageTitle>
       <div className="grid gap-6 mb-8 md:grid-cols-2">
@@ -382,4 +366,4 @@ const doughnutOptions = {
   );
 }
 
-export default Dashboard
+export default Dashboard;
