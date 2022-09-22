@@ -105,7 +105,7 @@ function Modals() {
   }
   return (
     <>
-      <PageTitle>Modals</PageTitle>
+      <PageTitle>Stats</PageTitle>
       <CTA />
       {/* <div>
         <Button onClick={openModal}>Open modal</Button>
@@ -135,7 +135,7 @@ function Modals() {
         <ModalBody>
           <TableContainer className="overflow-scroll" style={{ height: 600 }}>
             <Table>
-              <TableHeader>
+              <TableHeader closeName="">
                 <tr>
                   <TableCell>Player</TableCell>
                   <TableCell>Goals</TableCell>

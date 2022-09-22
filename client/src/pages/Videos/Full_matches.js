@@ -108,7 +108,8 @@ function Full_match() {
                       allowfullscreen
                       controls
                       controlsList="nodownload"
-                      preload="metadata"
+                      preload="auto"
+                      loading = "lazy"
                     >
                       <source src={m.video} />
                       frameborder = "0" allow="accelerometer; gyroscope;
