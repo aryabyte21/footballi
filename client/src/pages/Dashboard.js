@@ -132,6 +132,12 @@ function Dashboard() {
   return (
     <>
       <PageTitle>Dashboard</PageTitle>
+      <div className="place-content-center">
+      </div>
+      <div className="text-4xl text-center p-4">
+        {team && team.map((player1) => player1.name)}
+      </div>
+
       {/* CTA */}
       <div
         className="flex items-center justify-between p-4 mb-8 text-m font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
@@ -344,7 +350,7 @@ function Dashboard() {
         </div>
         <TableFooter></TableFooter>
       </TableContainer>
-      <br/>
+      <br />
 
       <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-2">
         <img src={Finals1} alt="horse" />
