@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react'
-import { SidebarContext } from '../context/SidebarContext'
+import React, { useContext, useState } from "react";
+import { SidebarContext } from "../context/SidebarContext";
 import {
   SearchIcon,
   MoonIcon,
@@ -9,25 +9,45 @@ import {
   OutlinePersonIcon,
   OutlineCogIcon,
   OutlineLogout,
-} from '../icons'
-import { Avatar, Badge, Input, Dropdown, DropdownItem, WindmillContext } from '@windmill/react-ui'
+} from "../icons";
+import {
+  Avatar,
+  Badge,
+  Input,
+  Dropdown,
+  DropdownItem,
+  WindmillContext,
+} from "@windmill/react-ui";
 import { useAuthActions, useAuthState } from "use-eazy-auth";
+import { rj, useRunRj } from "react-rocketjump";
+import { ajax } from "rxjs/ajax";
+const TeamState = rj({
+  effectCaller: rj.configured(),
+  effect:
+    (token) =>
+    (search = "") =>
+      ajax.getJSON(`https://api.sportskpi.com/api/team/?search=${search}`, {
+        Authorization: `Bearer ${token}`,
+      }),
+});
 
 function Header() {
-  const { mode, toggleMode } = useContext(WindmillContext)
-  const { toggleSidebar } = useContext(SidebarContext)
+  const { mode, toggleMode } = useContext(WindmillContext);
+  const { toggleSidebar } = useContext(SidebarContext);
 
-  const [isNotificationsMenuOpen, setIsNotificationsMenuOpen] = useState(false)
-  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false)
+  const [isNotificationsMenuOpen, setIsNotificationsMenuOpen] = useState(false);
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const { logout } = useAuthActions();
 
   function handleNotificationsClick() {
-    setIsNotificationsMenuOpen(!isNotificationsMenuOpen)
+    setIsNotificationsMenuOpen(!isNotificationsMenuOpen);
   }
 
   function handleProfileClick() {
-    setIsProfileMenuOpen(!isProfileMenuOpen)
+    setIsProfileMenuOpen(!isProfileMenuOpen);
   }
+  const [search, setSearch] = useState("");
+  const [{ data: team }] = useRunRj(TeamState, [search], false);
 
   return (
     <header className="z-40 py-4 bg-white shadow-bottom dark:bg-gray-800">
@@ -112,7 +132,7 @@ function Header() {
             >
               <Avatar
                 className="align-middle"
-                src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Zinedine_Zidane_by_Tasnim_03.jpg"
+                src={team && team.map((player1) => player1.logo)}
                 alt=""
                 aria-hidden="true"
               />
@@ -145,4 +165,4 @@ function Header() {
   );
 }
 
-export default Header
+export default Header;

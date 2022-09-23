@@ -132,9 +132,14 @@ function Dashboard() {
   return (
     <>
       <PageTitle>Dashboard</PageTitle>
-      <div className="place-content-center">
+      <div className="flex items-center justify-center">
+        <img
+          class="mb-3 h-32 mx-2"
+          src={team && team.map((player1) => player1.logo)}
+          alt="Bonnie image"
+        />
       </div>
-      <div className="text-4xl text-center p-4">
+      <div className="text-4xl text-center p-2">
         {team && team.map((player1) => player1.name)}
       </div>
 
