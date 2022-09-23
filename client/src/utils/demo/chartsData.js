@@ -14,94 +14,94 @@ export const barLegends = [
   { title: 'Bags', color: 'bg-purple-600' },
 ]
 
-export const doughnutOptions = {
-  data: {
-    datasets: [
-      {
-        data: [33, 33, 33],
-        /**
-         * These colors come from Tailwind CSS palette
-         * https://tailwindcss.com/docs/customizing-colors/#default-color-palette
-         */
-        backgroundColor: ['#0694a2', '#1c64f2', '#7e3af2'],
-        label: 'Dataset 1',
-      },
-    ],
-    labels: ['Shoes', 'Shirts', 'Bags'],
-  },
-  options: {
-    responsive: true,
-    cutoutPercentage: 80,
-  },
-  legend: {
-    display: false,
-  },
-}
+// export const doughnutOptions = {
+//   data: {
+//     datasets: [
+//       {
+//         data: [33, 33, 33],
+//         /**
+//          * These colors come from Tailwind CSS palette
+//          * https://tailwindcss.com/docs/customizing-colors/#default-color-palette
+//          */
+//         backgroundColor: ['#0694a2', '#1c64f2', '#7e3af2'],
+//         label: 'Dataset 1',
+//       },
+//     ],
+//     labels: ['Shoes', 'Shirts', 'Bags'],
+//   },
+//   options: {
+//     responsive: true,
+//     cutoutPercentage: 80,
+//   },
+//   legend: {
+//     display: false,
+//   },
+// }
 
-export const lineOptions = {
-  data: {
-    labels: [
-      "Jamshedpur FC",
-      "Jamshedpur FC",
-      "FC Goa",
-      "Hyderabad FC",
-    ],
-    datasets: [
-      {
-        label: "Kerela Blasters",
-        /**
-         * These colors come from Tailwind CSS palette
-         * https://tailwindcss.com/docs/customizing-colors/#default-color-palette
-         */
-        backgroundColor: "#0694a2",
-        borderColor: "#0694a2",
-        data: [1, 1, 4, 1],
-        fill: false,
-      },
-      {
-        label: "Opponent",
-        fill: false,
-        /**
-         * These colors come from Tailwind CSS palette
-         * https://tailwindcss.com/docs/customizing-colors/#default-color-palette
-         */
-        backgroundColor: "#7e3af2",
-        borderColor: "#7e3af2",
-        data: [1,0,4,1],
-      },
-    ],
-  },
-  options: {
-    responsive: true,
-    tooltips: {
-      mode: "index",
-      intersect: false,
-    },
-    hover: {
-      mode: "nearest",
-      intersect: true,
-    },
-    scales: {
-      x: {
-        display: true,
-        scaleLabel: {
-          display: true,
-          labelString: "Month",
-        },
-      },
-      y: {
-        display: true,
-        scaleLabel: {
-          display: true,
-          labelString: "Value",
-        },
-      },
-    },
-  },
-  legend: {
-    display: false,
-  },
-};
+// export const lineOptions = {
+//   data: {
+//     labels: [
+//       "Jamshedpur FC",
+//       "Jamshedpur FC",
+//       "FC Goa",
+//       "Hyderabad FC",
+//     ],
+//     datasets: [
+//       {
+//         label: "Kerela Blasters",
+//         /**
+//          * These colors come from Tailwind CSS palette
+//          * https://tailwindcss.com/docs/customizing-colors/#default-color-palette
+//          */
+//         backgroundColor: "#0694a2",
+//         borderColor: "#0694a2",
+//         data: [1, 1, 4, 1],
+//         fill: false,
+//       },
+//       {
+//         label: "Opponent",
+//         fill: false,
+//         /**
+//          * These colors come from Tailwind CSS palette
+//          * https://tailwindcss.com/docs/customizing-colors/#default-color-palette
+//          */
+//         backgroundColor: "#7e3af2",
+//         borderColor: "#7e3af2",
+//         data: [1,0,4,1],
+//       },
+//     ],
+//   },
+//   options: {
+//     responsive: true,
+//     tooltips: {
+//       mode: "index",
+//       intersect: false,
+//     },
+//     hover: {
+//       mode: "nearest",
+//       intersect: true,
+//     },
+//     scales: {
+//       x: {
+//         display: true,
+//         scaleLabel: {
+//           display: true,
+//           labelString: "Month",
+//         },
+//       },
+//       y: {
+//         display: true,
+//         scaleLabel: {
+//           display: true,
+//           labelString: "Value",
+//         },
+//       },
+//     },
+//   },
+//   legend: {
+//     display: false,
+//   },
+// };
 
 export const barOptions = {
   data: {

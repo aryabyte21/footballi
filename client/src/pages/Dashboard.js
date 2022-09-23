@@ -111,6 +111,73 @@ function Dashboard() {
       display: false,
     },
   };
+
+
+ const lineOptions = {
+   data: {
+     labels : counter && counter.slice(0, 5).map((player) => player.opponent),
+      
+     
+     datasets: [
+       {
+         label: "Kerela Blasters",
+         /**
+          * These colors come from Tailwind CSS palette
+          * https://tailwindcss.com/docs/customizing-colors/#default-color-palette
+          */
+         backgroundColor: "#0694a2",
+         borderColor: "#0694a2",
+         data: 
+           counter && counter.slice(0, 4).map((player) => player.goals),
+           
+         fill: false,
+       },
+       {
+         label: "Opponent",
+         fill: false,
+         /**
+          * These colors come from Tailwind CSS palette
+          * https://tailwindcss.com/docs/customizing-colors/#default-color-palette
+          */
+         backgroundColor: "#7e3af2",
+         borderColor: "#7e3af2",
+         data: 
+           counter && counter.slice(0, 5).map((player) => player.opponent_goals),
+       },
+     ],
+   },
+   options: {
+     responsive: true,
+     tooltips: {
+       mode: "index",
+       intersect: false,
+     },
+     hover: {
+       mode: "nearest",
+       intersect: true,
+     },
+     scales: {
+       x: {
+         display: true,
+         scaleLabel: {
+           display: true,
+           labelString: "Month",
+         },
+       },
+       y: {
+         display: true,
+         scaleLabel: {
+           display: true,
+           labelString: "Value",
+         },
+       },
+     },
+   },
+   legend: {
+     display: false,
+   },
+ };
+
   // pagination setup
   const resultsPerPage = 10;
   const totalResults = response.length;
