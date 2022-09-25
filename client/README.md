@@ -207,7 +207,6 @@ sequence
 bring nationality in player info
 
 # players
-mins_played
 <!-- goals -->
 <!-- assist -->
 shots
@@ -216,11 +215,8 @@ crosses
 <!-- tackles -->
 <!-- corners -->
 <!-- freeckicks -->
-saves
 <!-- yellow card -->
 <!-- red cards -->
-interception
-aerial duels
 
 # speak with mam to check if cumulative data of player performance would be available
 

@@ -376,6 +376,8 @@ function Dashboard() {
             </div>
           ))}
       </div>
+      <PageTitle>Players</PageTitle>
+
       <TableContainer>
         <div className="h-64 overflow-scroll">
           <Table>
@@ -423,6 +425,7 @@ function Dashboard() {
         <TableFooter></TableFooter>
       </TableContainer>
       <br />
+      <PageTitle>Visualization</PageTitle>
 
       <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-2">
         <img src={Finals1} alt="horse" />
