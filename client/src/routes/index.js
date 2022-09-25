@@ -51,7 +51,7 @@ const routes = [
     component: Buttons,
   },
   {
-    path: "/modals",
+    path: "/stats",
     component: Modals,
   },
   {

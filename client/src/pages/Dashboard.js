@@ -24,7 +24,6 @@ import {
 import Finals1 from "../pages/images/Finals1.png";
 import Finals2 from "../pages/images/Finals2.png";
 
-
 import {
   lineOptions,
   doughnutLegends,
@@ -112,71 +111,69 @@ function Dashboard() {
     },
   };
 
+  const lineOptions = {
+    data: {
+      labels: counter && counter.slice(0, 5).map((player) => player.opponent),
 
- const lineOptions = {
-   data: {
-     labels : counter && counter.slice(0, 5).map((player) => player.opponent),
-      
-     
-     datasets: [
-       {
-         label: "Kerela Blasters",
-         /**
-          * These colors come from Tailwind CSS palette
-          * https://tailwindcss.com/docs/customizing-colors/#default-color-palette
-          */
-         backgroundColor: "#0694a2",
-         borderColor: "#0694a2",
-         data: 
-           counter && counter.slice(0, 4).map((player) => player.goals),
-           
-         fill: false,
-       },
-       {
-         label: "Opponent",
-         fill: false,
-         /**
-          * These colors come from Tailwind CSS palette
-          * https://tailwindcss.com/docs/customizing-colors/#default-color-palette
-          */
-         backgroundColor: "#7e3af2",
-         borderColor: "#7e3af2",
-         data: 
-           counter && counter.slice(0, 5).map((player) => player.opponent_goals),
-       },
-     ],
-   },
-   options: {
-     responsive: true,
-     tooltips: {
-       mode: "index",
-       intersect: false,
-     },
-     hover: {
-       mode: "nearest",
-       intersect: true,
-     },
-     scales: {
-       x: {
-         display: true,
-         scaleLabel: {
-           display: true,
-           labelString: "Month",
-         },
-       },
-       y: {
-         display: true,
-         scaleLabel: {
-           display: true,
-           labelString: "Value",
-         },
-       },
-     },
-   },
-   legend: {
-     display: false,
-   },
- };
+      datasets: [
+        {
+          label: "Kerela Blasters",
+          /**
+           * These colors come from Tailwind CSS palette
+           * https://tailwindcss.com/docs/customizing-colors/#default-color-palette
+           */
+          backgroundColor: "#0694a2",
+          borderColor: "#0694a2",
+          data: counter && counter.slice(0, 4).map((player) => player.goals),
+
+          fill: false,
+        },
+        {
+          label: "Opponent",
+          fill: false,
+          /**
+           * These colors come from Tailwind CSS palette
+           * https://tailwindcss.com/docs/customizing-colors/#default-color-palette
+           */
+          backgroundColor: "#7e3af2",
+          borderColor: "#7e3af2",
+          data:
+            counter &&
+            counter.slice(0, 5).map((player) => player.opponent_goals),
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      tooltips: {
+        mode: "index",
+        intersect: false,
+      },
+      hover: {
+        mode: "nearest",
+        intersect: true,
+      },
+      scales: {
+        x: {
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: "Month",
+          },
+        },
+        y: {
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: "Value",
+          },
+        },
+      },
+    },
+    legend: {
+      display: false,
+    },
+  };
 
   // pagination setup
   const resultsPerPage = 10;
@@ -362,13 +359,13 @@ function Dashboard() {
                   </span>
                   <div class="flex mt-4 space-x-3 md:mt-6">
                     <a
-                      href="#"
+                      href="/app/Full_match"
                       class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     >
                       Videos
                     </a>
                     <a
-                      href="/app/modals"
+                      href="/app/stats"
                       class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"
                     >
                       Stats
@@ -433,12 +430,12 @@ function Dashboard() {
       </div>
       <PageTitle>Charts</PageTitle>
       <div className="grid gap-6 mb-8 md:grid-cols-2">
-        <ChartCard title="total stats">
+        <ChartCard title="Match Stats">
           <Doughnut {...doughnutOptions} />
           <ChartLegend legends={doughnutLegends} />
         </ChartCard>
 
-        <ChartCard title="performance">
+        <ChartCard title="Goals Stats ">
           <Line {...lineOptions} />
           <ChartLegend legends={lineLegends} />
         </ChartCard>
