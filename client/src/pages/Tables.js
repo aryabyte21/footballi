@@ -86,7 +86,7 @@ function Tables() {
     effect:
       (token) =>
       (search = "") =>
-        ajax.getJSON(`https://api.sportskpi.com/api/team/?search=${search}`, {
+        ajax.getJSON(`https://api.sportskpi.com/api/players/?search=${search}`, {
           Authorization: `Bearer ${token}`,
         }),
   });
@@ -112,13 +112,18 @@ function Tables() {
           />
         </div>
       </div> */}
-       {players &&
-                players.map((player, i) => (
-      performance && 
-      performance.filter((n) => n.name1 === player.name)
-          .reduce(
-            (total, currentValue) => (total = total + currentValue.goals), 0 )
-        ))}
+      {/* {players &&
+        players.map(
+          (player, i) =>
+            performance &&
+            performance
+              .filter((n) => n.name1 === player.name)
+              .reduce(
+                (total, currentValue) =>
+                  (total = total + currentValue.recovered_balls),
+                0
+              )
+        )} */}
       <div className="flex justify-center flex-1 lg:mr-32">
         <div className="relative w-full max-w-xl mr-6 focus-within:text-purple-500">
           <div className="absolute inset-y-0 flex items-center pl-2">
@@ -140,24 +145,25 @@ function Tables() {
           <TableHeader>
             <tr>
               <TableCell>Player</TableCell>
-              <TableCell>Tournament</TableCell>
               <TableCell>Goals</TableCell>
               <TableCell>Corners</TableCell>
-              <TableCell>Tackle Accuracy</TableCell>
               <TableCell>Assists</TableCell>
-              <TableCell>balls recovered</TableCell>
+              <TableCell>tackles</TableCell>
+              <TableCell>freekicks</TableCell>
               <TableCell>fouls</TableCell>
+              <TableCell>red card</TableCell>
+              <TableCell>yellow card</TableCell>
             </tr>
           </TableHeader>
           <TableBody>
-            {performance &&
-              performance.map((user, i) => (
+            {players &&
+              players.map((user, i) => (
                 <TableRow key={i}>
                   <TableCell>
                     <div className="flex items-center text-sm">
                       {/* <Avatar className="hidden mr-3 md:block" src={user.avatar} alt="User avatar" /> */}
                       <div>
-                        <p className="font-semibold">{user.name1}</p>
+                        <p className="font-semibold">{user.name}</p>
                         <p className="text-xs text-gray-600 dark:text-gray-400">
                           {user.position}
                         </p>
@@ -165,28 +171,102 @@ function Tables() {
                     </div>
                   </TableCell>
                   <TableCell>
-                    <span className="text-sm">{user.tournament}</span>
+                    <Badge type={user.status}>
+                      {performance &&
+                        performance
+                          .filter((n) => n.name1 === user.name)
+                          .reduce(
+                            (total, currentValue) =>
+                              (total = total + currentValue.goals),
+                            0
+                          )}
+                    </Badge>
+                  </TableCell>
+
+                  <TableCell>
+                    <Badge type={user.status}>
+                      {" "}
+                      {performance &&
+                        performance
+                          .filter((n) => n.name1 === user.name)
+                          .reduce(
+                            (total, currentValue) =>
+                              (total = total + currentValue.corners),
+                            0
+                          )}
+                    </Badge>
                   </TableCell>
                   <TableCell>
-                    <Badge type={user.status}>{user.goals}</Badge>
-                  </TableCell>
-                  {/* <TableCell>
-                    <span className="text-sm">{user.date}</span>
-                  </TableCell> */}
-                  <TableCell>
-                    <Badge type={user.status}>{user.corners}</Badge>
-                  </TableCell>
-                  <TableCell>
-                    <Badge type={user.status}>{user.tackles_accuracy}%</Badge>
-                  </TableCell>
-                  <TableCell>
-                    <Badge type={user.status}>{user.assists}</Badge>
+                    <Badge type={user.status}>
+                      {performance &&
+                        performance
+                          .filter((n) => n.name1 === user.name)
+                          .reduce(
+                            (total, currentValue) =>
+                              (total = total + currentValue.assists),
+                            0
+                          )}
+                    </Badge>
                   </TableCell>
                   <TableCell>
-                    <Badge type={user.status}>{user.recovered_balls}</Badge>
+                    <Badge type={user.status}>
+                      {performance &&
+                        performance
+                          .filter((n) => n.name1 === user.name)
+                          .reduce(
+                            (total, currentValue) =>
+                              (total = total + currentValue.tackles),
+                            0
+                          )}
+                    </Badge>
                   </TableCell>
                   <TableCell>
-                    <Badge type={user.status}>{user.fouls_commited}</Badge>
+                    <Badge type={user.status}>
+                      {performance &&
+                        performance
+                          .filter((n) => n.name1 === user.name)
+                          .reduce(
+                            (total, currentValue) =>
+                              (total = total + currentValue.freekicks),
+                            0
+                          )}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>
+                      {performance &&
+                        performance
+                          .filter((n) => n.name1 === user.name)
+                          .reduce(
+                            (total, currentValue) =>
+                              (total = total + currentValue.fouls_commited),
+                            0
+                          )}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>
+                      {performance &&
+                        performance
+                          .filter((n) => n.name1 === user.name)
+                          .reduce(
+                            (total, currentValue) =>
+                              (total = total + currentValue.reds),
+                            0
+                          )}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>
+                      {performance &&
+                        performance
+                          .filter((n) => n.name1 === user.name)
+                          .reduce(
+                            (total, currentValue) =>
+                              (total = total + currentValue.yellows),
+                            0
+                          )}
+                    </Badge>
                   </TableCell>
                 </TableRow>
               ))}

@@ -206,9 +206,12 @@ function Dashboard() {
           alt="Bonnie image"
         />
       </div>
-      <div className="text-4xl text-center p-2">
-        {team && team.map((player1) => player1.name)}
-      </div>
+      <PageTitle>
+        {" "}
+        <div className="text-4xl text-center p-2">
+          {team && team.map((player1) => player1.name)}
+        </div>
+      </PageTitle>
 
       {/* CTA */}
       <div
