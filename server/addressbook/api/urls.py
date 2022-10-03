@@ -26,6 +26,8 @@ router.register(r'performance', PerformanceViewSet)
 urlpatterns += router.urls
 router.register(r'video', VideoViewSet)
 urlpatterns += router.urls
+router.register(r'videok', VideoKViewSet)
+urlpatterns += router.urls
 
 
 

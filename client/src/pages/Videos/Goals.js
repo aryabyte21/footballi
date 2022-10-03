@@ -125,7 +125,6 @@ function Goals_conceded() {
               </div>
             ))}
       </div>
-
       <SectionTitle>Oppponent Goals</SectionTitle>
       <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
         {v &&
@@ -162,3 +161,5 @@ function Goals_conceded() {
 }
 
 export default Goals_conceded;
+
+

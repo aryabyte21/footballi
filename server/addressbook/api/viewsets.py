@@ -132,3 +132,25 @@ class VideoViewSet(viewsets.ModelViewSet):
                 | models.Q(win_lose__icontains=search)
             )
         return qs5
+
+
+class VideoKViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
+    queryset = VideoK.objects.order_by("-date")
+    serializer_class = VideoKSerializer
+
+    def get_queryset(self):
+        qs6 = super().get_queryset()
+        # Get only contact about current authenticated user
+        qs6 = qs6.filter(user=self.request.user)
+        # Add search capabilities
+        search = self.request.query_params.get("search", None)
+        if search:
+            qs6 = qs6.filter(
+                models.Q(tournament__icontains=search)
+                | models.Q(season__icontains=search)
+                | models.Q(match_no__icontains=search)
+                | models.Q(raider_name__icontains=search)
+                | models.Q(raiding_team_name__icontains=search)
+            )
+        return qs6

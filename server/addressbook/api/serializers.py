@@ -104,3 +104,17 @@ class VideoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Video
         exclude = ('user', )
+
+
+class VideoKSerializer(serializers.ModelSerializer):
+
+    # Create new contact associated with current authenticated user
+    def create(self, validated_data):
+        user = self.context['request'].user
+        validated_data['user'] = user
+        videok = super().create(validated_data)
+        return videok
+
+    class Meta:
+        model = VideoK
+        exclude = ('user', )
