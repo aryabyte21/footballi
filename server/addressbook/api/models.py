@@ -143,4 +143,4 @@ class VideoK(models.Model):
     counter_action_skills = models.CharField(max_length=300, default=None)
 
     def __str__(self):
-        return "%s - %s" % (self.opponent, self.date)
+        return "%s - %s" % (self.tournament_name, self.date)
