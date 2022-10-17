@@ -19,6 +19,7 @@ const Full_match = lazy(() => import("../pages/Videos/Full_matches"));
 const Goals_conceded = lazy(() => import("../pages/Videos/Goals"));
 const Goals_scored = lazy(() => import("../pages/Videos/Goals_scored"));
 const Transd = lazy(() => import("../pages/Videos/Transd"));
+const UploadVideo = lazy(()=> import("../pages/UploadVideo"));
 /**
  * ⚠ These are internal routes!
  * They will be rendered inside the app, using the default `containers/Layout`.
@@ -101,6 +102,10 @@ const routes = [
   {
     path: "/Transd",
     component: Transd,
+  },
+  {
+    path: "/UploadVideo",
+    component: UploadVideo,
   },
 ];
 

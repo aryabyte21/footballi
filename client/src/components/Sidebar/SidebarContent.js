@@ -1,11 +1,12 @@
 import React from 'react'
 import routes from '../../routes/sidebar'
-import { NavLink, Route } from 'react-router-dom'
+import { NavLink, Route, Link } from 'react-router-dom'
 import * as Icons from '../../icons'
 import SidebarSubmenu from './SidebarSubmenu'
 import { Button } from '@windmill/react-ui'
 import {
   OutlineLogout,
+  OutlineCogIcon
 } from "../../icons";
 import { useAuthActions, useAuthState } from "use-eazy-auth";
 
@@ -54,6 +55,17 @@ function SidebarContent() {
           )
         )}
       </ul>
+      <div className="px-6 my-6">
+        <Link to="/app/UploadVideo">
+          <Button>
+            Upload Video
+            <span className="ml-2" aria-hidden="true">
+              <OutlineCogIcon className="w-4 h-4 mr-3" aria-hidden="true" />
+            </span>
+          </Button>
+        </Link>
+      </div>
+
       <div className="px-6 my-6">
         <Button onClick={logout}>
           Logout
