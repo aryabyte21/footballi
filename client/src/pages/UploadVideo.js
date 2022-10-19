@@ -12,7 +12,7 @@ import {
   HelperText,
   Button,
 } from "@windmill/react-ui";
-
+import { ChartsIcon } from "../icons";
 const S3_BUCKET = "uploadedvideos121";
 const REGION = "ap-south-1";
 
@@ -30,17 +30,23 @@ const UploadVideo = () => {
   const { user } = useAuthUser();
   const [progress, setProgress] = useState(0);
   const [selectedFile, setSelectedFile] = useState(null);
+    const [selectedFile1, setSelectedFile1] = useState(null);
+
 
   const handleFileInput = (e) => {
     setSelectedFile(e.target.files[0]);
   };
+   const handleFileInput1 = (e) => {
+     setSelectedFile1(e.target.files[0]);
+   };
 
   const uploadFile = (file) => {
     const params = {
       Body: file,
       Bucket: S3_BUCKET,
-      Key: user.username + Date(),
+      Key: user.username  + " " + Date(),
     };
+    
 
     myBucket
       .putObject(params)
@@ -51,7 +57,22 @@ const UploadVideo = () => {
         if (err) console.log(err);
       });
   };
+const uploadFile1 = (file1) => {
+  const params = {
+    Body: file1,
+    Bucket: S3_BUCKET,
+    Key: user.username + " excel file " + Date(),
+  };
 
+  myBucket
+    .putObject(params)
+    .on("httpUploadProgress", (evt1) => {
+      setProgress(Math.round((evt1.loaded / evt1.total) * 100));
+    })
+    .send((err) => {
+      if (err) console.log(err);
+    });
+};
   return (
     <div>
       <PageTitle>Upload Video</PageTitle>
@@ -61,19 +82,44 @@ const UploadVideo = () => {
             You can upload the videos here we will analyze and make it live on
             the platform!
           </p>
-          <p className="text-gray-600 dark:text-gray-400">
-            <Input type="file" onChange={handleFileInput} />
-          </p>
-          <HelperText valid>
-            The Video uploading progress is {progress}%
-          </HelperText>
+          <Label>
+            <span>Video</span>
+            <p className="text-gray-600 dark:text-gray-400">
+              <Input type="file" onChange={handleFileInput} />
+            </p>
+            <HelperText valid>
+              The Video uploading progress is {progress}%
+            </HelperText>
+          </Label>
+          <br />
+          <a href="https://uploadedvideos121.s3.ap-south-1.amazonaws.com/kerela_blasters%40fcthis+is+excelTue+Oct+18+2022+23%3A15%3A08+GMT%2B0530+(India+Standard+Time)">
+            <Button layout="outline" iconRight={ChartsIcon}>
+              {" "}
+              Download the template spreadsheet
+            </Button>
+          </a>
           <br />
           <br />
-
-          <Button onClick={() => uploadFile(selectedFile)}>
+          <Label>
+            <span>Spreadsheet</span>
+            <p className="text-gray-600 dark:text-gray-400">
+              <Input type="file" onChange={handleFileInput1} />
+            </p>
+            <HelperText valid>
+              The Spreadsheet uploading progress is {progress}%
+            </HelperText>
+          </Label>
+          <br />
+          <br />
+          <Button
+            onClick={() => {
+              uploadFile(selectedFile);
+              uploadFile1(selectedFile1);
+            }}
+          >
             {" "}
             Upload to S3
-          </Button>
+          </Button>{" "}
         </CardBody>
       </Card>
     </div>
