@@ -14,12 +14,12 @@ import {
   Button,
 } from "@windmill/react-ui";
 import { ChartsIcon } from "../icons";
-const S3_BUCKET = "uploadedvideos121";
-const REGION = "ap-south-1";
+const S3_BUCKET = process.env.REACT_APP_S3_BUCKET;
+const REGION = process.env.REACT_APP_REGION;
 
 AWS.config.update({
-  accessKeyId: "AKIAXM23T6GRHU64RJ77",
-  secretAccessKey: "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",
+  accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
+  secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY,
 });
 
 const myBucket = new AWS.S3({

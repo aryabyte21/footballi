@@ -1,5 +1,4 @@
 import React from "react";
-import { Button
 function page() {
   return 
   <div>
