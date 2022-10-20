@@ -96,7 +96,7 @@ const UploadVideo = () => {
             </HelperText>
           </Label>
           <br />
-          <a href="https://uploadedvideos121.s3.ap-south-1.amazonaws.com/kerela_blasters%40fcthis+is+excelTue+Oct+18+2022+23%3A15%3A08+GMT%2B0530+(India+Standard+Time)">
+          <a href="https://docs.google.com/document/d/10Fvmz9t30rxUpkKMlxgwlmNFv4mccUMh0QqFfG4dMCI/edit?usp=drivesdk">
             <Button layout="outline" iconRight={ChartsIcon}>
               {" "}
               Download the template spreadsheet
@@ -144,30 +144,31 @@ const UploadVideo = () => {
             </>
           )}
           {progress + progress1 == 200 ? (
-               (setTimeout(function () {
-                  window.location.reload();
-                }, 3000)) &&
-            <>
+            setTimeout(function () {
+              window.location.reload();
+            }, 3000) && (
+              <>
                 {" "}
-              <div
-                class="p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex"
-                role="alert"
-              >
-                <span class="flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3">
-                  New
-                </span>
-                <span class="font-semibold mr-2 text-left flex-auto">
-                  File has been transferred sucessfully.
-                </span>
-                <svg
-                  class="fill-current opacity-75 h-4 w-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
+                <div
+                  class="p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex"
+                  role="alert"
                 >
-                  <path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z" />
-                </svg>
-              </div>
-            </>
+                  <span class="flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3">
+                    New
+                  </span>
+                  <span class="font-semibold mr-2 text-left flex-auto">
+                    File has been transferred sucessfully.
+                  </span>
+                  <svg
+                    class="fill-current opacity-75 h-4 w-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z" />
+                  </svg>
+                </div>
+              </>
+            )
           ) : (
             <></>
           )}
