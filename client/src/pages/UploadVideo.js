@@ -145,8 +145,8 @@ const UploadVideo = () => {
           )}
           {progress + progress1 == 200 ? (
             setTimeout(function () {
-              window.location.reload();
-            }, 3000) && (
+              window.location.href("/app/dashboard");
+            }, 2000) && (
               <>
                 {" "}
                 <div

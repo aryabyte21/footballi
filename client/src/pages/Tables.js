@@ -153,6 +153,27 @@ function Tables() {
               <TableCell>fouls</TableCell>
               <TableCell>red card</TableCell>
               <TableCell>yellow card</TableCell>
+              <TableCell>recovered balls</TableCell>
+              <TableCell>Penalties taken</TableCell>
+              <TableCell>Penalties scored</TableCell>
+              <TableCell>Jersey no</TableCell>
+              <TableCell>Minutes</TableCell>
+              <TableCell>Own goals</TableCell>
+              <TableCell>Clearances</TableCell>
+              <TableCell>Blocks</TableCell>
+              <TableCell>Interceptions</TableCell>
+              <TableCell>Catches</TableCell>
+              <TableCell>Punches</TableCell>
+              <TableCell>Saves</TableCell>
+              <TableCell>Cleansheet</TableCell>
+              <TableCell>Throws</TableCell>
+              <TableCell>Offside</TableCell>
+              <TableCell>Long passes</TableCell>
+              <TableCell>Short passes</TableCell>
+              <TableCell>Lost balls</TableCell>
+              <TableCell>Chances created</TableCell>
+              <TableCell>Crosses</TableCell>
+              <TableCell>Dribbles</TableCell>
             </tr>
           </TableHeader>
           <TableBody>
@@ -264,6 +285,258 @@ function Tables() {
                           .reduce(
                             (total, currentValue) =>
                               (total = total + currentValue.yellows),
+                            0
+                          )}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>
+                      {performance &&
+                        performance
+                          .filter((n) => n.name1 === user.name)
+                          .reduce(
+                            (total, currentValue) =>
+                              (total = total + currentValue.recovered_balls),
+                            0
+                          )}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>
+                      {performance &&
+                        performance
+                          .filter((n) => n.name1 === user.name)
+                          .reduce(
+                            (total, currentValue) =>
+                              (total = total + currentValue.penalties_taken),
+                            0
+                          )}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>
+                      {performance &&
+                        performance
+                          .filter((n) => n.name1 === user.name)
+                          .reduce(
+                            (total, currentValue) =>
+                              (total = total + currentValue.penalties_scored),
+                            0
+                          )}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>
+                      {performance &&
+                        performance
+                          .filter((n) => n.name1 === user.name)
+                          .reduce(
+                            (total, currentValue) =>
+                              (total = total + currentValue.jersey_no),
+                            0
+                          )}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>
+                      {performance &&
+                        performance
+                          .filter((n) => n.name1 === user.name)
+                          .reduce(
+                            (total, currentValue) =>
+                              (total = total + currentValue.minutes),
+                            0
+                          )}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>
+                      {performance &&
+                        performance
+                          .filter((n) => n.name1 === user.name)
+                          .reduce(
+                            (total, currentValue) =>
+                              (total = total + currentValue.own_goals),
+                            0
+                          )}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>
+                      {performance &&
+                        performance
+                          .filter((n) => n.name1 === user.name)
+                          .reduce(
+                            (total, currentValue) =>
+                              (total = total + currentValue.clearances),
+                            0
+                          )}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>
+                      {performance &&
+                        performance
+                          .filter((n) => n.name1 === user.name)
+                          .reduce(
+                            (total, currentValue) =>
+                              (total = total + currentValue.blocks),
+                            0
+                          )}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>
+                      {performance &&
+                        performance
+                          .filter((n) => n.name1 === user.name)
+                          .reduce(
+                            (total, currentValue) =>
+                              (total = total + currentValue.interceptions),
+                            0
+                          )}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>
+                      {performance &&
+                        performance
+                          .filter((n) => n.name1 === user.name)
+                          .reduce(
+                            (total, currentValue) =>
+                              (total = total + currentValue.catches),
+                            0
+                          )}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>
+                      {performance &&
+                        performance
+                          .filter((n) => n.name1 === user.name)
+                          .reduce(
+                            (total, currentValue) =>
+                              (total = total + currentValue.punches),
+                            0
+                          )}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>
+                      {performance &&
+                        performance
+                          .filter((n) => n.name1 === user.name)
+                          .reduce(
+                            (total, currentValue) =>
+                              (total = total + currentValue.saves),
+                            0
+                          )}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>
+                      {performance &&
+                        performance
+                          .filter((n) => n.name1 === user.name)
+                          .reduce(
+                            (total, currentValue) =>
+                              (total = total + currentValue.cleansheet),
+                            0
+                          )}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>
+                      {performance &&
+                        performance
+                          .filter((n) => n.name1 === user.name)
+                          .reduce(
+                            (total, currentValue) =>
+                              (total = total + currentValue.throws),
+                            0
+                          )}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>
+                      {performance &&
+                        performance
+                          .filter((n) => n.name1 === user.name)
+                          .reduce(
+                            (total, currentValue) =>
+                              (total = total + currentValue.offside),
+                            0
+                          )}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>
+                      {performance &&
+                        performance
+                          .filter((n) => n.name1 === user.name)
+                          .reduce(
+                            (total, currentValue) =>
+                              (total = total + currentValue.long_passes),
+                            0
+                          )}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>
+                      {performance &&
+                        performance
+                          .filter((n) => n.name1 === user.name)
+                          .reduce(
+                            (total, currentValue) =>
+                              (total = total + currentValue.short_passes),
+                            0
+                          )}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>
+                      {performance &&
+                        performance
+                          .filter((n) => n.name1 === user.name)
+                          .reduce(
+                            (total, currentValue) =>
+                              (total = total + currentValue.lost_balls),
+                            0
+                          )}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>
+                      {performance &&
+                        performance
+                          .filter((n) => n.name1 === user.name)
+                          .reduce(
+                            (total, currentValue) =>
+                              (total = total + currentValue.chances_created),
+                            0
+                          )}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>
+                      {performance &&
+                        performance
+                          .filter((n) => n.name1 === user.name)
+                          .reduce(
+                            (total, currentValue) =>
+                              (total = total + currentValue.crosses),
+                            0
+                          )}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge type={user.status}>
+                      {performance &&
+                        performance
+                          .filter((n) => n.name1 === user.name)
+                          .reduce(
+                            (total, currentValue) =>
+                              (total = total + currentValue.dribbles),
                             0
                           )}
                     </Badge>

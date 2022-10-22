@@ -148,6 +148,27 @@ function Modals() {
                   <TableCell>fouls</TableCell>
                   <TableCell>Red Card</TableCell>
                   <TableCell>Yellow Card</TableCell>
+                  <TableCell>recovered balls</TableCell>
+                  <TableCell>Penalties taken</TableCell>
+                  <TableCell>Penalties scored</TableCell>
+                  <TableCell>Jersey no</TableCell>
+                  <TableCell>Minutes</TableCell>
+                  <TableCell>Own goals</TableCell>
+                  <TableCell>Clearances</TableCell>
+                  <TableCell>Blocks</TableCell>
+                  <TableCell>Interceptions</TableCell>
+                  <TableCell>Catches</TableCell>
+                  <TableCell>Punches</TableCell>
+                  <TableCell>Saves</TableCell>
+                  <TableCell>Cleansheet</TableCell>
+                  <TableCell>Throws</TableCell>
+                  <TableCell>Offside</TableCell>
+                  <TableCell>Long passes</TableCell>
+                  <TableCell>Short passes</TableCell>
+                  <TableCell>Lost balls</TableCell>
+                  <TableCell>Chances created</TableCell>
+                  <TableCell>Crosses</TableCell>
+                  <TableCell>Dribbles</TableCell>
                 </tr>
               </TableHeader>
               <TableBody>
@@ -182,9 +203,7 @@ function Modals() {
                           <Badge type={user.status}>{user.assists}</Badge>
                         </TableCell>
                         <TableCell>
-                          <Badge type={user.status}>
-                            {user.tackles}
-                          </Badge>
+                          <Badge type={user.status}>{user.tackles}</Badge>
                         </TableCell>
                         <TableCell>
                           <Badge type={user.status}>{user.freekicks}</Badge>
@@ -202,6 +221,77 @@ function Modals() {
                         </TableCell>
                         <TableCell>
                           <Badge type={user.status}>{user.yellows}</Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>
+                            {user.recovered_balls}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>
+                            {user.penalties_taken}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>
+                            {user.penalties_scored}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>{user.jersey_no}</Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>{user.minutes}</Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>{user.own_goals}</Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>{user.clearances}</Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>{user.blocks}</Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>{user.interceptions}</Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>{user.catches}</Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>{user.punches}</Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>{user.saves}</Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>{user.cleansheet}</Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>{user.throws}</Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>{user.offside}</Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>{user.long_passes}</Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>{user.short_passes}</Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>{user.lost_balls}</Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>
+                            {user.chances_created}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>{user.crosses}</Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge type={user.status}>{user.dribbles}</Badge>
                         </TableCell>
                       </TableRow>
                     ))}
