@@ -9,3 +9,9 @@ class MeView(APIView):
     def get(self, request):
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
+
+    def post(self, request):
+        post_data = request.data
+        # do something with `post_data`
+        return Response(serializer.data)
+    

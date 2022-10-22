@@ -132,6 +132,12 @@ class VideoViewSet(viewsets.ModelViewSet):
                 | models.Q(win_lose__icontains=search)
             )
         return qs5
+    
+    def create(self, request):  # Here is the new update comes <<<<
+        post_data = request.data
+        # do something with post data
+        return Response(data="return data")
+
 
 
 class VideoKViewSet(viewsets.ModelViewSet):

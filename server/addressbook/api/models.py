@@ -81,6 +81,7 @@ class Match(models.Model):
     away_shoton = models.IntegerField(default=0)
     home_shots = models.IntegerField(default=0)
     away_shots = models.IntegerField(default=0)
+    
 
     def __str__(self):
         return "%s - %s" % (self.tournament_name, self.date)
@@ -105,6 +106,24 @@ class Performance(models.Model):
     tackles = models.IntegerField(default=0)
     penalties_taken = models.IntegerField(default=0)
     penalties_scored = models.IntegerField(default=0)
+    jersey_no = models.IntegerField(default=0)
+    minutes = models.IntegerField(default=0)
+    own_goals = models.IntegerField(default=0)
+    clearances = models.IntegerField(default=0)
+    blocks = models.IntegerField(default=0)
+    interceptions = models.IntegerField(default=0)
+    catches = models.IntegerField(default=0)
+    punches = models.IntegerField(default=0)
+    saves = models.IntegerField(default=0)
+    cleansheet = models.IntegerField(default=0)
+    throws = models.IntegerField(default=0)
+    offside = models.IntegerField(default=0)
+    long_passes = models.IntegerField(default=0)
+    short_passes = models.IntegerField(default=0)
+    lost_balls = models.IntegerField(default=0)
+    chances_created = models.IntegerField(default=0)
+    crosses = models.IntegerField(default=0)
+    dribbles = models.IntegerField(default=0)
 
     def __str__(self):
         return "%s - %s" % (self.name1, self.goals)
