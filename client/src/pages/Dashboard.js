@@ -117,7 +117,7 @@ function Dashboard() {
 
       datasets: [
         {
-          label: "Kerela Blasters",
+          label: team && team.map((player1) => player1.name),
           /**
            * These colors come from Tailwind CSS palette
            * https://tailwindcss.com/docs/customizing-colors/#default-color-palette
@@ -425,12 +425,12 @@ function Dashboard() {
         <TableFooter></TableFooter>
       </TableContainer>
       <br />
-      <PageTitle>Visualization</PageTitle>
+      {/* <PageTitle>Visualization</PageTitle>
 
       <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-2">
         <img src={Finals1} alt="horse" />
         <img src={Finals2} alt="horse" />
-      </div>
+      </div> */}
       <PageTitle>Charts</PageTitle>
       <div className="grid gap-6 mb-8 md:grid-cols-2">
         <ChartCard title="Match Stats">
