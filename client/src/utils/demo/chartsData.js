@@ -5,7 +5,7 @@ export const doughnutLegends = [
 ]
 
 export const lineLegends = [
-  { title: 'Kerela Blaster', color: 'bg-teal-600' },
+  { title: 'My Team', color: 'bg-teal-600' },
   { title: 'Other teams', color: 'bg-purple-600' },
 ]
 
