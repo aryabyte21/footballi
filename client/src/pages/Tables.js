@@ -332,7 +332,7 @@ function Tables() {
                           .filter((n) => n.name1 === user.name)
                           .reduce(
                             (total, currentValue) =>
-                              (total = total + currentValue.jersey_no),
+                              (total = currentValue.jersey_no),
                             0
                           )}
                     </Badge>
